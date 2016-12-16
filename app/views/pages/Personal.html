@@ -1,0 +1,152 @@
+<div class="center-block w-xxl1 w-auto-xs p-v-md " >
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+        <img src="images/main-logo.png" height="50px">
+      </div>
+    </div>
+    <div class="panel md-whiteframe-z1 text-color m">
+      <div class="panel-heading bg-white">
+        <h4><b>Personal Details</b></h4>
+      </div>
+      <hr style="margin: auto;"/>
+      <form name="form" ng-submit="personaldetail()">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6 m-b">
+              
+               <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>First Name</label>
+                 <input name="firstname" class="md-input" ng-model="firstname" required> 
+                  <div class="errors" ng-messages="form.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+              
+            </div>
+            <div class="col-sm-6 m-b">
+              
+                <!-- <input type="text"  ng-model="lastname" ng-required="true">
+                <label>Last Name</label> -->
+                <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                <label>Last Name</label>
+                 <input name="lastname" name="lastname" class="md-input" ng-model="lastname" ng-required="true"> 
+                 <div class="errors" ng-messages="form.lastname.$error">
+          <div ng-message="required">Please Enter Your Last Name</div>
+        </div>
+                </md-input-container>
+            
+            </div>
+            <div class="col-sm-4 m-b">
+             
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 m-b">
+              <!-- <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>About</label>
+                <input  name="about" class="md-input" ng-model='about' required >
+                <div class="errors" ng-messages="user.about.$error">
+                  <div ng-message="required">Enter Your Personal Details</div>
+                </div>
+              </md-input-container>   -->     
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                <label>About</label>
+                 <input name="about" class="md-input" ng-model="about" ng-required="true"> 
+                 <div class="errors" ng-messages="form.about.$error">
+                  <div ng-message="required">Enter Your Personal Details</div>
+                </div>
+              </md-input-container> 
+            </div>
+            
+            <div class="col-sm-4 m-b">
+              
+               <!--  <md-input-container>
+                  <label>Gender</label>
+                  <md-select name="gender" required>
+                    <md-option value="red">Male</md-option>
+                    <md-option value="blue">Female</md-option>
+                    
+                  </md-select>
+                  <div class="errors" ng-messages="form.name.$error">
+                    <div ng-message="required">Please Enter</div>
+                  </div>
+                </md-input-container> -->
+                <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <md-select name="gender" ng-model="gender" required >
+                    <label value="gender" style="padding-left: 13px">Gender</label>
+                    <md-option value="male">Male</md-option>
+                    <md-option value="female">Female</md-option>
+                    <md-option value="others">Others</md-option>
+                </md-select>
+                <div class="errors" ng-messages="form.gender.$error">
+          <div ng-message="required">Please Select Your Gender</div>
+        </div>
+                </md-input-container>
+
+
+            <!--   <md-input-container>
+              <label>Gender</label>
+                <md-select>              
+                  <md-option>Male</md-option>
+                  <md-option>female</md-option>
+                </md-select>
+              </md-input-container>\ -->
+
+              <!--  <select class="md-input" ng-model="gender" required >
+                    <option value="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>  -->
+              </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-sm-3 m-b">
+            <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+              <md-select name="country" ng-model="gender" required >
+                    <label value="gender" style="padding-left: 13px">Select Country</label>
+              </md-select>
+               <div class="errors" ng-messages="form.country.$error">
+          <div ng-message="required">Please Select Your Country</div>
+        </div>
+              </md-input-container>
+            </div>
+            <div class="col-sm-3 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+              <md-select name="state" ng-model="gender" required >
+                    <label value="gender" style="padding-left: 13px">Select State</label>
+              </md-select>
+              <div class="errors" ng-messages="form.state.$error">
+          <div ng-message="required">Please Select Your State</div>
+        </div>
+              </md-input-container>          
+            </div>
+            <div class="col-sm-3 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+              <md-select name="city" ng-model="gender" required >
+                    <label value="gender" style="padding-left: 13px">Select City</label>
+              </md-select>
+               <div class="errors" ng-messages="form.city.$error">
+          <div ng-message="required">Please Select Your City</div>
+        </div>
+              </md-input-container >
+            </div>
+            <div class="col-sm-3 m-b">
+             
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+              <label>Pincode</label>
+                <input type="text" name="pincode" class="md-input" ng-model="pincode" required>
+                 <div class="errors" ng-messages="form.pincode.$error">
+          <div ng-message="required">Please Enter Your Pincode</div>
+        </div>
+              </md-input-container>  
+              </div>
+            
+          </div>
+          <footer class="p text-right">
+            <button type="submit" class="md-btn md-raised p-h-md"> Next</button>
+          
+          </footer>
+      </form>
+    </div>
+  </div>

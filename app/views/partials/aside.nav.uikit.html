@@ -1,0 +1,246 @@
+<nav ui-nav ng-class="$state.current.data.theme ? $state.current.data.theme.primary : app.setting.theme.primary">
+  <ul class="nav">
+    <li class="nav-header m-v-sm hidden-folded">
+      Categories
+    </li>
+    
+    <li ui-sref-active="active">
+      <a md-ink-ripple ui-sref="app.index">
+         
+        <i class="icon mdi-action-home i-20"></i>
+        <span class="font-normal">Home</span>
+      </a>
+    </li>
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        
+        <i class="icon mdi-av-play-circle-fill i-20"></i>
+        <span class="font-normal">Short Films</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Bengali',categories:'Short Film'})">Bengali 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'English',categories:'Short Film'})">English 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Gujarathi',categories:'Short Film'})">Gujarathi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Hindi',categories:'Short Film'})">Hindi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Kannada',categories:'Short Film'})">Kannada 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Malayalam',categories:'Short Film'})">Malayalam 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Marathi',categories:'Short Film'})">Marathi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Punjabi',categories:'Short Film'})">Punjabi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Tamil',categories:'Short Film'})">Tamil 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Telegu',categories:'Short Film'})">Telegu 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.movies({language:'Urdu',categories:'Short Film'})">Urdu 
+            
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        
+        <i class="icon mdi-image-audiotrack i-20"></i>
+        <span class="font-normal">Music</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Bengali',categories:'Music'})">Bengali 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'English',categories:'Music'})">English 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Gujarathi',categories:'Music'})">Gujarathi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Hindi',categories:'Music'})">Hindi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Kannada',categories:'Music'})">Kannada 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Malayalam',categories:'Music'})">Malayalam 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Marathi',categories:'Music'})">Marathi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Punjabi',categories:'Music'})">Punjabi 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Tamil',categories:'Music'})">Tamil 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Telegu',categories:'Music'})">Telegu 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.musics({language:'Urdu',categories:'Music'})">Urdu 
+            
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        
+        <i class="icon mdi-action-settings-input-svideo i-20"></i>
+        <span class="font-normal">Dance</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Ballet'})">Ballet 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Belly Dance'})">Belly Dance 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Bangara'})">Bangara 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Break Dance'})">Break Dance 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Classical'})">Classical 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Folk'})">Folk 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Hiphop'})">Hiphop 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Kathak'})">Kathak 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Kathakali'})">Kathakali 
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Mixed'})">Mixed
+            
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dance({subcategories:'Salsa'})">Salsa  
+            
+          </a>
+        </li>
+      </ul>
+    </li>
+     <li ui-sref-active="active">
+      <a md-ink-ripple ui-sref="app.userdiscover">
+         
+        <i class="icon mdi-action-trending-up i-20"></i>
+        <span class="font-normal">Discover People</span>
+      </a>
+    </li>
+    <li ui-sref-active="active">
+      <a md-ink-ripple ui-sref="app.trending">
+         
+        <i class="icon mdi-action-trending-up i-20"></i>
+        <span class="font-normal">Trending</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if=$root.id>
+      <a md-ink-ripple ui-sref="app.history">
+         
+        <i class="icon mdi-action-history i-20"></i>
+        <span class="font-normal" ui-sref="app.history">History</span>
+      </a>
+    </li>
+    <li ui-sref-active="active" ng-if=$root.id>
+      <a md-ink-ripple ui-sref="app.messages">
+         
+        <i class="icon mdi-communication-message i-20"></i>
+        <span class="font-normal">Messages</span>
+      </a>
+    </li>
+    
+    
+  </ul>
+</nav>

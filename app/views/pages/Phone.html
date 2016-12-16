@@ -1,0 +1,28 @@
+<div class="center-block w-xxl1 w-auto-xs p-v-md " >
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+        <img src="images/main-logo.png" height="50px">
+      </div>
+    </div>
+    <div class="panel md-whiteframe-z1 text-color m">
+      <div class="panel-heading bg-white">
+        <h4><b>Phone Number</b></h4>
+      </div>
+      <hr style="margin: auto;"/>
+      <form name="form">
+        <div class="panel-body" style="padding-bottom: 0px;">
+          <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>Phone Number</label>
+                <input  name="phone" ng-model='mobilenumber' type="phone"  ng-pattern="/^([7-9]{1}[0-9]{9})$/" required="">
+                <div class="errors" ng-messages="user.phone.$error">  
+                  <div ng-message="pattern"></div>                   
+                </div>
+              </md-input-container>
+        </div>
+        <footer class="p text-right">
+          <button ng-click="contactdetail()"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">Save</button>
+          <button ng-click="personaldetail()"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">cancel</button>
+        </footer>
+      </form>
+    </div>
+  </div>

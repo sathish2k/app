@@ -1,0 +1,42 @@
+<div class="center-block w-xxl1 w-auto-xs p-v-md " >
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+        <img src="images/main-logo.png" height="50px">
+      </div>
+    </div>
+    <div class="panel md-whiteframe-z1 text-color m" align="center">
+        <h2 style="font-size: -webkit-xxx-large; margin-bottom: 20px; letter-spacing: 5px;">HELLO!</h2>
+        <h3 style="margin-bottom: 20px; "><b>Welcome to Cast Tree</b></h3>
+        <h5 style="margin-bottom: 20px;"><b>You are almost ready just a click away.</b></h5>
+
+          <div class="text-center">
+          <div class="inline">
+            <div ui-jp="easyPieChart" ui-options="{
+                percent: 50,
+                lineWidth: 70,
+                trackColor: '#fff',
+                barColor: '{{app.color.success}}',
+                scaleColor: '#00ff00',
+                size: 167,
+                lineCap: 'butt',
+                rotate: 360,
+                animate: 2000
+              }">
+              <div class="font-bold h3 text-primary">
+                50%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-bottom: 20px;"><b>Please check your email for a confirmation message from us.</b></h4>
+        <h5 style="margin-bottom: 20px;"><b>Didn’t get a confirmation email ? </b></h5>
+        <h5 style="margin-bottom: 20px;"><b>Please check the spam folder in your email program. If it’s not there, we can send an another verification mail </b></h5>
+
+        <button style="margin-bottom: 20px;" ng-click="resendmail()" class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">Resend Verification Mail</button>
+         <h5 style="margin-bottom: 10px;"><b>Have Questions ? </b></h5>
+         <h5 style="margin-bottom: 20px;"><b><u> <a href="#">Vist our FAQ</a></u> </b></h5>
+
+         
+    </div>
+  </div>

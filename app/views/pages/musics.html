@@ -1,0 +1,169 @@
+<div style="width: 300px;float: right;">
+<form>
+  <div class="input-group stylish-input-group">
+    <input type="text" ng-model=catsearched class="form-control" placeholder="search in songs">
+    <span class="input-group-addon">
+    <button type="submit" ui-sref="app.searchcat({contains:(catsearched),categories:'Songs'})">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>  
+    </span>
+  </div>
+</form>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">Featured Videos</h3>
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card md-whiteframe-z3">
+        <div class="card-heading">
+          <a href class="pull-left w-32 m-r">
+              <img src="images/a6.jpg" class="w-full img-circle">
+          </a>
+          <div class="clear">
+              <a href class="font-bold block">James Brogan</a>
+              <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <a ui-sref="app.single({id:upload.id})">
+            <img width="100%" ng-src="http://img.youtube.com/vi/K9jQm0FZZ98/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+          </a>  
+        </div>
+        <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">23</a>
+        <div class="card-body">
+          <h3 style="padding-left: 0px;margin-top: 10px;"><a ui-sref="app.single({id:upload.id})">Paracosm</a></h3>
+          <div>
+            <hr style="margin:0px;" />
+            <h5><b>Language : </b>Gujarathi</h5>
+            <h5><b>Genre : </b>Adventure</h5>
+            <h5><b>Views : </b>6542</h5>
+          </div>          
+        </div>    
+      </div>
+    </div>
+  </div>  
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">Recently Uploaded</h3>
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
+    <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in recentupload">
+      <div class="card md-whiteframe-z3">
+        <div class="card-heading">
+          <a href class="pull-left w-32 m-r">
+                     
+            <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
+            
+          </a>
+          <div class="clear">
+              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <a ui-sref="app.single({id:upload.id})">
+            <img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+          </a>  
+        </div>
+        <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
+        <div class="card-body">
+          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <div>
+            <hr style="margin:0px;" />
+            <h5><b>Language : </b>{{upload.language}}</h5>
+            <h5><b>Genre : </b>{{upload.subcategories}}</h5>
+            <h5><b>Views : </b>{{upload.views}}</h5>
+          </div>          
+        </div>    
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12" align="center" ng-repeat="upload in recentupload |limitTo:1">
+    <button ui-sref="app.recentupload({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
+  </div>  
+</div>
+
+ <div class="row">
+  <div class="col-lg-12">
+    <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;"> Most Viewed Today</h3>
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
+    <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in mostviewed">
+      <div class="card md-whiteframe-z3">
+        <div class="card-heading">
+          <a href class="pull-left w-32 m-r">
+                      
+          <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
+            
+          </a>
+          <div class="clear">
+              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <a ui-sref="app.single({id:upload.id})">
+            <img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+          </a>  
+        </div>
+        <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
+        <div class="card-body">
+          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <div>
+            <hr style="margin:0px;" />
+            <h5><b>Language : </b>{{upload.language}}</h5>
+            <h5><b>Genre : </b>{{upload.subcategories}}</h5>
+            <h5><b>Views : </b>{{upload.views}}</h5>
+          </div>          
+        </div>    
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
+    <button ui-sref="app.mostviewed({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
+  </div>  
+</div>
+
+<div class="row" ng-if=$root.id>
+  <div class="col-lg-12">
+    <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">You May Like</h3>
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
+    <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in youmaylike">
+      <div class="card md-whiteframe-z3">
+        <div class="card-heading">
+          <a href class="pull-left w-32 m-r">
+                      
+          <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
+            
+          </a>
+          <div class="clear">
+              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <a ui-sref="app.single({id:upload.id})">
+            <img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+          </a>  
+        </div>
+        <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
+        <div class="card-body">
+          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <div>
+            <hr style="margin:0px;" />
+            <h5><b>Language : </b>{{upload.language}}</h5>
+            <h5><b>Genre : </b>{{upload.subcategories}}</h5>
+            <h5><b>Views : </b>{{upload.views}}</h5>
+          </div>          
+        </div>    
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
+    <button ui-sref="app.youmaylikelistcat({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
+  </div> 
+</div>
+        
+      

@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-lg-12 col-md-6 col-sm-6">
+    	<div class="md-whiteframe-z0 bg-white">
+	        <ul class="nav nav-lines nav-tabs nav-justified">
+	          <li class="active">
+	            <a href data-toggle="tab" data-target="#tab_7">Basic info</a>
+	          </li>
+	          <li>
+	            <a href data-toggle="tab" data-target="#tab_8">Crew</a>
+	          </li>
+	        </ul>
+        	<div class="tab-content p m-b-md clear b-t b-t-2x">
+          		<div role="tabpanel" class="tab-pane animated fadeInDown active" id="tab_7">
+           			<div class="col-lg-8">
+	           			<div layout="row">
+					        <md-input-container flex="50">
+					          <label style="font-size: large;" >Name</label>
+					          <input required name="Name" style="font-size: large;" ng-model="Name" md-maxlength="150">
+					          <div ng-messages="uploadForm.Name.$error">
+					            <div ng-message="required">Name filed is required.</div>
+					            <div ng-message="md-maxlength">The Name must be less than 150 characters long.</div>
+					          </div>
+					        </md-input-container>
+					        <md-input-container flex="50">
+					          <label style="font-size: large;">Type</label>
+					          <md-select name="type"  ng-model="type" required>
+					            <md-option value="public" >Public</md-option>
+					            <md-option value="private">Private</md-option>
+					          </md-select>
+					          
+					        </md-input-container>
+			    		</div>
+					    
+					    <md-input-container class="md-block" style="margin-bottom: 0px;">
+							<label style="font-size: large;">Youtube Video Link</label>
+							<input ng-disabled='link' style="font-size: large;" required  name="link" ng-model='link' type="url" pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)">
+							<div ng-messages="uploadForm.link.$error">
+			   			 		<div ng-message="required">This is required.</div>
+			   			 		<div ng-message="pattern">Youtube link only....</div>
+							</div>
+						</md-input-container>
+		      			
+		      			<md-chips ng-model="tags" required ng-maxlenght="3" placeholder="Enter a tag"readonly="isReadonly" md-removable="removable"></md-chips>
+							<div ng-messages="tag.$error">
+					          <div ng-message="required">This is required.</div>
+					        </div>									    
+		    
+					    <md-input-container class="md-block" style="margin-top: 35px;" >
+					     	<label style="font-size: large;">Description</label>
+					        <input md-maxlength="1000" required style="font-size: large;" md-no-asterisk name="description" ng-model="description">
+					        <div ng-messages="uploadForm.description.$error">
+					          <div ng-message="required">This is required.</div>
+					          <div ng-message="md-maxlength">The description must be less than 500 characters long.</div>
+					        </div>
+					    </md-input-container>
+					    
+					    <md-input-container style="width: 210px;">
+							<label style="font-size: large;">Category</label>
+							<md-select style="margin-bottom: 20px;" ng-model="category" >
+				            	<md-option data-ng-repeat="(k,v) in list" ng-value="k">{{ k }}</md-option>
+				        	</md-select>
+				    	</md-input-container>
+
+				    	<md-input-container style="width: 210px;">
+						    <label style="font-size: large;">Sub Category</label>
+						    <md-select style="margin-bottom: 20px;" ng-model="subcategory">
+						       	<md-option data-ng-repeat="t in level2" ng-value="t">{{ t }}
+						       	</md-option>
+						    </md-select>
+						</md-input-container>
+
+						<md-input-container style="width: 210px;">
+			          		<label style="font-size: large;">Language</label>
+			          		<md-select name="type" style="margin-bottom: 20px;" ng-model="lang" required>
+			            		<md-option value="Bengali">Bengali</md-option>
+			            		<md-option value="English">English</md-option>
+			            		<md-option value="Gujarathi">Gujarathi</md-option>
+			            		<md-option value="Hindi">Hindi</md-option>
+			            		<md-option value="Kannada">Kannada</md-option>
+			            		<md-option value="Malayalam">Malayalam</md-option>
+			            		<md-option value="Marathi">Marathi</md-option>
+			            		<md-option value="Punjabi">Punjabi</md-option>
+			            		<md-option value="Tamil">Tamil</md-option>
+			            		<md-option value="Telugu">Telegu</md-option>
+			            		<md-option value="Urdu">Urdu</md-option>
+			            	</md-select>
+			        	</md-input-container>
+			        </div>
+			        <div class="col-lg-4">
+			        	
+			        	<div class="card">
+			        		<h3>Video Thumbnail</h3>
+			        	<img width="100%" ng-src="http://img.youtube.com/vi/{{link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="">		
+			        	</div>
+			        	<button md-ink-ripple ng-click="add()" class="md-btn md-raised pull-right p-h-md {{app.setting.theme.accent}}">Update</button>
+			        </div>
+			        <!--  -->
+          		</div>
+          <div role="tabpanel" class="tab-pane animated fadeInDown" id="tab_8">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form ng-submit="addNew()">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" /></th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="personalDetail in personalDetails">
+                                        <td>
+                                            <input type="checkbox" ng-model="personalDetail.selected"/></td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="personalDetail.name" required/></td>
+                                        <td>
+                                        <input type="hidden" ng-init="selectedItem=personalDetail.username">
+                                         <input type="hidden" ng-value="personalDetail.username=selectedItem.username" ng-model="personalDetail.username">
+                                         <form ng-submit="$event.preventDefault()" name="searchForm">
+                                         
+                                            <md-autocomplete flex required
+                                            md-floating-label="Username" 
+				                            md-item-text="item.username"
+				                            md-items="item in data" 
+				                            md-search-text-change="querySearch(searchText)"
+				                            md-search-text="searchText" 
+				                            md-selected-item="selectedItem" 
+				                            md-no-cache="noCache" 
+				                            md-input-name="autocompleteField" 
+				                            
+				                            ng-model="searchText"
+				                            md-require-match>
+				                            <md-item-template>
+								           
+								          <span class="item-title">
+								           <a href class="pull-left w-32 m-r"> 
+								             <ng-letter-avatar data={{item.username}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
+								             </a>
+								             <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.username}}</span>
+								          </span>
+								         
+								        </md-item-template>
+								        <div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+								         <div ng-message="md-require-match">Please select an existing user.</div>
+								         </div>
+								         <md-not-found>
+								          No users matching "{{searchText}}" were found.
+								        </md-not-found>
+								        </md-autocomplete>
+                                        </form>
+                                        <td>
+                                            <input class="form-control" ng-model="personalDetail.role" value="ss" required/></td>
+                                    </tr>
+                                    <!-- <h1>{{personalDetails}}</h1> -->
+
+				                       
+
+                                </tbody>
+                            </table>
+                            <div class="form-group">
+                                <input  type="button" class="btn btn-danger pull-right" ng-click="remove()" value="Remove">
+                                <input type="submit" class="btn btn-primary addnew pull-right" value="Add New">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        </div>
+      </div>
+    </div>
+ </div>
+

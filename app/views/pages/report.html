@@ -1,0 +1,12 @@
+<md-dialog ng-controller="ReportCtrl">
+<md-radio-group style="padding: 20px">
+      <md-radio-button value="race">It's hate speech against a race, religious group, gender or disability</md-radio-button>
+      <md-radio-button value="harassing">It's harassing an individual</md-radio-button>
+      <md-radio-button value="violence">It shows graphic violence, theft or vandalism</md-radio-button>
+      <md-radio-button value="suicide">It promotes or threatens self-harm or suicide</md-radio-button>
+      <md-radio-button value="intellectual">It's an unauthorized use of my intellectual property</md-radio-button>
+      <md-radio-button value="something">It's something else</md-radio-button>
+      <button md-ink-ripple type="button" class="md-btn md-raised indigo" ng-click="answer(value)">Submit</button>
+      <button md-ink-ripple type="button" class="md-btn md-raised indigo" ng-click="answer(cancel)">Cancel</button>
+</md-radio-group>
+</md-dialog>

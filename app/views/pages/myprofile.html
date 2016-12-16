@@ -1,0 +1,176 @@
+<div class="row row-sm">
+  <div class="col-sm-4">
+    <div class="panel panel-card" md-whiteframe="11">
+      <div class="r-t pos-rlt" md-ink-ripple style="background:url(images/a0.jpg) center center; background-size:cover">
+        <div class="p-lg bg-white-overlay text-center r-t">
+          <a href class="w-xs inline">
+            <img src="images/a0.jpg" class="img-circle img-responsive">
+          </a>
+          <div class="m-b m-t-sm h2">
+            <span class="">{{profile[0].username}}</span>
+          </div>
+           <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ><div ng-cloak ng-if=!$root.isfollow ng-click="follow()">Follow</div><div ng-cloak ng-if=$root.isfollow ng-click="unfollow()">Following</div></button>
+          <p ng-repeat="detail in profile.personaldetails">
+            
+          </p>
+        </div>
+      </div>
+      <div class="list-group no-radius no-border">
+        <a class="list-group-item">
+          <span class="pull-right badge">12</span> 
+            <i class="icon mdi-communication-forum i-20" style="margin-right: 5px;"></i>
+         Send Messages
+        </a>
+        <a class="list-group-item">
+          <span class="pull-right badge">{{videoscount}}</span> 
+            <i class="icon mdi-av-video-collection i-20" style="margin-right: 5px;"></i>
+          Videos
+        </a>
+      </div>
+      <div class="text-center b-b b-light">
+        <a href class="inline m text-color">
+          <span class="h3 block font-bold">{{followerscount}}</span>
+          <em class="text-xs">Followers</em>
+        </a>
+        <a href class="inline m text-color">
+          <span class="h3 block font-bold">{{followingcount}}</span>
+          <em class="text-xs">Following</em>
+        </a>
+      </div>
+      <div class="p b-b b-light">
+        <p>About</p>
+        <p ng-repeat="detail in profile[0].personaldetails">{{detail.about}}</p>
+        <div class="m-v text-center" ng-repeat="detail in profile[0].socialdetails">
+          <a ng-if=(detail.fburl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-facebook"></i>
+          </a>
+          <a ng-if=(detail.twitterurl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-twitter"></i>
+          </a>
+          <a ng-if=(detail.googleurl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-google"></i>
+          </a>
+          <a ng-if=(detail.instagramurl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-instagram"></i>
+          </a>
+          <a ng-if=(detail.youtubeurl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-youtube"></i>
+          </a>
+          <a ng-if=(detail.linkedinurl) class="text-muted" href={{detail.fburl}} target="_blank">
+            <i class="fa ui-icon fa-linkedin"></i>
+          </a>
+        </div>
+        <div class="list-group no-radius no-border" >
+        <a class="list-group-item" ng-if=(profile[0].email)>
+          <i class="icon mdi-content-mail i-20"  style="margin-right: 5px;"></i><span>{{profile[0].email}}</span>
+        </a>
+        <a class="list-group-item" ng-if=(detail.mobilenumber) ng-repeat="detail in profile[0].contactdetails">
+          <i class="icon mdi-communication-phone i-20"  style="margin-right: 5px;" ></i>{{detail.mobilenumber}}  
+        </a>
+        <a class="list-group-item" ng-if=(detail.website) ng-repeat="detail in profile[0].socialdetails">
+          <i class="glyphicon glyphicon-globe i-20" style="margin-right: 5px;"></i> {{detail.website}}
+        </a>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card {{app.setting.theme.primary}}">
+          <div class="card-heading">
+            <h2 class="font-thin">Followers</h2>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-body">
+            <a href class="m-r-xs inline">
+              <img src="images/a4.jpg" class="w-40 img-circle">
+            </a>
+            <a href class="m-r-xs inline">
+              <img src="images/a5.jpg" class="w-40 img-circle">
+            </a>
+            <a href class="m-r-xs inline">
+              <img src="images/a6.jpg" class="w-40 img-circle">
+            </a>
+            <a class="btn btn-rounded btn-info">99+</a>
+          </div>
+        </div>  
+      </div>
+      <div class="col-sm-6">
+        <div class="card {{app.setting.theme.primary}}">
+          <div class="card-heading">
+            <h2 class="font-thin">Following</h2>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-body">
+            <a href class="m-r-xs inline">
+              <img src="images/a4.jpg" class="w-40 img-circle">
+            </a>
+            <a href class="m-r-xs inline">
+              <img src="images/a5.jpg" class="w-40 img-circle">
+            </a>
+            <a href class="m-r-xs inline">
+              <img src="images/a6.jpg" class="w-40 img-circle">
+            </a>
+            <a class="btn btn-rounded btn-info">99+</a>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <div class="md-whiteframe-z0 bg-white">
+        <ul class="nav nav-lines nav-tabs b-warning">
+          <li>
+            <a href data-toggle="tab" data-target="#tab_4">{{profile[0].username}}'s Timeline</a>
+          </li>        
+        </ul>
+        <div class="tab-content p m-b-md b-t b-t-2x">
+          <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab_4">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="card" ng-repeat="detail in videos" >
+                  <div class="card-heading">
+                    <a href class="pull-left w-32 m-r">
+                      <img src="images/a3.jpg" class="w-full img-circle">
+                    </a>
+                    <div class="clear">
+                      <a href class="font-bold block">{{detail.uploadername}}</a>
+                      <div class="text-xxs font-thin text-muted">Published on - {{detail.createdAt.substr(0,10)}}</div>
+                    </div>
+                  </div>
+                  <div class="card-tools">
+                    <ul class="list-inline">
+                      <li class="dropdown">
+                        <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                          <i class="mdi-navigation-more-vert text-md"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                          <li><a href>Hide</a></li>
+                          <li><a href>Report</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <a ui-sref="app.single({id:detail.id})">
+                      <img width="100%" ng-src="http://img.youtube.com/vi/{{detail.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+                  </a>
+                  <a md-ink-ripple="" class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(detail.rating)/(detail.usercount)||0 |number:1}}</a>
+                  <div class="card-body">
+                    <h3 style="padding-left: 0px;"><a ui-sref="app.single({id:upload.id})">{{detail.name}}</a></h3>
+                      <div >
+                        <hr style="margin:0px;" />
+                        <h5><b>Language : </b>{{detail.language}}</h5>
+                        <h5><b>Genre : </b>{{detail.subcategories}}</h5>
+                        <h5><b>Views : </b>{{detail.views}}</h5>
+                        <hr style="margin:10px;" />
+                        <p>
+                          {{detail.discription}}
+                        </p>
+                      </div>
+                  </div>
+                </div> 
+              </div>
+            </div>       
+          </div>
+        </div>
+      </div>
+

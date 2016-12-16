@@ -1,0 +1,42 @@
+<div class="row row-sm">
+  <div class="col-sm-4">
+    <div class="panel panel-card" md-whiteframe="11">
+      <div class="r-t pos-rlt" md-ink-ripple style="background:url(images/a0.jpg) center center; background-size:cover">
+        <div class="p-lg bg-white-overlay text-center r-t">
+          <a href class="w-xs inline">
+            <img src= "../../../../sails/app/assets/images/9715afe2-ea49-4053-a000-069877de4fa7.jpg" class="img-circle img-responsive">
+          </a>
+          <div class="m-b m-t-sm h2">
+            
+          </div>
+          <form>
+           <a href="#" class="btn btn-sm btn-success m-b p-h no-border" type="button" onclick="document.getElementById('fileID').click(); return false;">Upload Photo</a> <input id="fileID" type="file" accept="image/png,image/jpeg, image/jpg"  type="file" onchange="angular.element(this).scope().uploadFile(this.files)"  style="visibility: hidden; display: none;" />
+        </form>
+        </div>
+      </div>
+      <ul class="nav nav-lists b-t" ui-nav >
+        <li  ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.settings.ps">Profile</a>
+        </li>
+        <li  ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.settings.security">Security</a>
+        </li>
+        <li  ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.settings.privacy">Privacy</a>
+        </li>
+        <li  ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.settings.notifications">Notifications</a>
+        </li>
+        <li  ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.settings.">Payment</a>
+        </li>
+        <!-- <li>
+          <a ui-sref="app.settings.">Organizations</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+  <div ui-view=''></div>
+</div>
+
+

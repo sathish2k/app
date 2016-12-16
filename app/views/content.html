@@ -1,0 +1,190 @@
+<div class="box" >
+  <!-- Content Navbar -->
+  <div class="navbar md-whiteframe-z1 no-radius" ng-class="$state.current.data.theme ? $state.current.data.theme.primary : app.setting.theme.primary">
+    <!-- Open side - Naviation on mobile -->
+    <a md-ink-ripple ng-click="openAside()" ng-hide="$state.current.data.child" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+    <!-- / -->
+    <!-- GoBack - Back to parent if $state has the param 'child' -->
+    <a md-ink-ripple class="navbar-item pull-left" ng-click="goBack()" ng-show="$state.current.data.child" ><i class="mdi-navigation-arrow-back i-24"></i></a>
+    <!-- / -->
+    <!-- Page title - Bind to $state's title -->
+    <div class="navbar-item pull-left h4" ng-bind="$state.current.data.title"></div>
+    <!-- / -->
+    <!-- Common tools -->
+    <!-- Desktop -->
+    <ul class="nav nav-sm navbar-tool pull-right desktop" ng-hide="$state.current.data.child">
+      <li>
+        <a md-ink-ripple  ng-click="app.search.show = true">
+          <i class="mdi-action-search i-24" ></i>
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="app.upload">Upload</button>
+        </div>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple ui-sref="app.upload">
+          <i class="mdi-file-cloud-upload i-24"></i>
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="access.signin">Sigin In</button>
+        </div>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple data-toggle="modal" data-target="#user">
+          <i class="mdi-social-person-outline i-24"></i><b class="badge bg-danger up">3</b> 
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="access.signup">signup</button>
+        </div>
+      </li>
+      
+      <li class="dropdown" ng-if=$root.id>
+        <a md-ink-ripple data-toggle="dropdown">
+          <i class="mdi-navigation-more-vert i-24"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up text-color">
+          <li><a href>Single-column view</a></li>
+          <li><a href>Sort by date</a></li>
+          <li><a href>Sort by name</a></li>
+          <li class="divider"></li>
+          <li><a href>Help &amp; feedback</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!--tablet-->
+    <ul class="nav nav-sm navbar-tool pull-right tablet" ng-hide="$state.current.data.child">
+      <li>
+        <a md-ink-ripple  ng-click="app.search.show = true">
+          <i class="mdi-action-search i-24" ></i>
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="app.upload">Upload</button>
+        </div>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple ui-sref="app.upload">
+          <i class="mdi-file-cloud-upload i-24"></i>
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="access.signin">Sigin In</button>
+        </div>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple data-toggle="modal" data-target="#user">
+          <i class="mdi-social-person-outline i-24"></i><b class="badge bg-danger up">3</b> 
+        </a>
+      </li>
+      <li ng-if=!$root.id>
+        <div style="margin-top: 15px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ui-sref="access.signup">signup</button>
+        </div>
+      </li>
+      
+      <li class="dropdown" ng-if=$root.id>
+        <a md-ink-ripple data-toggle="dropdown">
+          <i class="mdi-navigation-more-vert i-24"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up text-color">
+          <li><a href>Single-column view</a></li>
+          <li><a href>Sort by date</a></li>
+          <li><a href>Sort by name</a></li>
+          <li class="divider"></li>
+          <li><a href>Help &amp; feedback</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <!--mobile-->
+    <ul class="nav nav-sm navbar-tool pull-right mobile" ng-hide="$state.current.data.child">
+      <li>
+        <a md-ink-ripple  ng-click="app.search.show = true">
+          <i class="mdi-action-search i-24" ></i>
+        </a>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple ui-sref="app.upload">
+          <i class="mdi-file-cloud-upload i-24"></i>
+        </a>
+      </li>
+      <li ng-if=$root.id>
+        <a md-ink-ripple data-toggle="modal" data-target="#user">
+          <i class="mdi-social-person-outline i-24"></i><b class="badge bg-danger up">3</b> 
+        </a>
+      </li>
+      <li class="dropdown" ng-if=$root.id>
+        <a md-ink-ripple data-toggle="dropdown">
+          <i class="mdi-navigation-more-vert i-24"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up text-color">
+          <li><a href>Single-column view</a></li>
+          <li><a href>Sort by date</a></li>
+          <li><a href>Sort by name</a></li>
+          <li class="divider"></li>
+          <li><a href>Help &amp; feedback</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav  navbar-tool pull-right mobile" style="margin-bottom: 10px;">
+      <li ng-if=!$root.id>
+        <div style="margin-top: 0px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised p-h-md indigo" ui-sref="app.upload">Upload</button>
+        </div>
+      </li>
+      
+      <li ng-if=!$root.id>
+        <div style="margin-top: 0px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised p-h-md indigo" ui-sref="access.signin">Sigin In</button>
+        </div>
+      </li>
+      
+      <li ng-if=!$root.id>
+        <div style="margin-top: 0px;margin-right: 5px;">
+          <button md-ink-ripple class="md-btn md-raised p-h-md indigo" ui-sref="access.signup">signup</button>
+        </div>
+      </li>
+    </ul>
+
+
+
+    <div class="pull-right" ui-view="navbar@"></div>
+    <!-- / -->
+    <!-- Search form -->
+    <div id="search" class="pos-abt w-full h-full" ng-show="app.search.show" ng-class="$state.current.data.theme ? $state.current.data.theme.primary : app.setting.theme.primary">
+      <div class="box">
+        <div class="box-col w-56 text-center">
+          <!-- hide search form -->
+          <a md-ink-ripple class="navbar-item inline" ng-click="app.search.show=false; app.search.content=''"><i class="mdi-navigation-arrow-back i-24"></i></a>
+        </div>
+        <div class="box-col v-m">
+          <!-- bind to app.search.content -->
+          <input class="form-control input-lg no-border md-whiteframe-z1  md-raised" placeholder="search in casttree" ng-model="searched"">
+        </div>
+
+        <div class="box-col w-56 text-center">
+          <a md-ink-ripple class="navbar-item inline"><i class="mdi-action-search i-24" ui-sref="app.search({contains:(searched)})"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- / -->
+  </div>
+  <!-- Content -->
+  <div class="box-row">
+    <md-content class="box-cell" layout="column" >
+      <div class="box-inner padding" ui-view id="view">
+      </md-content>
+    </div>
+  </div>
+  <!-- / -->
+</div>

@@ -1,0 +1,36 @@
+{
+  "name": "hr-angular-extend",
+  "authors": [
+    "Hernan Rajchert <hrajchert@gmail.com>"
+  ],
+  "main": "src/hrAngularExtend.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "angular",
+    "dependency",
+    "factory",
+    "service",
+    "extend"
+  ],
+  "devDependencies": {
+    "angular": "~1.3.5",
+    "angular-mocks": "~1.3.5"
+  },
+  "homepage": "https://github.com/hrajchert/hr-angular-extend",
+  "_release": "d2052dc97d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d2052dc97d59a2f81270faf02228c83d2a7a61c7"
+  },
+  "_source": "https://github.com/hrajchert/hr-angular-extend.git",
+  "_target": "*",
+  "_originalSource": "hr-angular-extend"
+}

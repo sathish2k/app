@@ -1,0 +1,100 @@
+<div class="col-sm-8">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading bg-white">
+          <h4><b>Privacy</b></h4>
+        </div>
+        <form>
+          <div class="panel-body" style="padding-top: 25px;">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Who can see my moblie number</h4>
+              </div>
+              <div class="col-sm-2">
+                <md-input-container style="margin: 0px;">
+                    <label style="font-size: large;">Type</label>
+                    <md-select name="type"  ng-model="upload.type" required>
+                      <md-option value="public" >Public</md-option>
+                      <md-option value="private">Private</md-option>
+                    </md-select> 
+                </md-input-container>
+              </div>
+            </div>
+            <footer class="p text-right">
+            <button type="submit" class="md-btn md-raised p-h-md">Submit</button>
+          </footer>  
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading bg-white">
+          <h4><b>Blocked User list</b></h4>
+        </div>
+        <div class="p row">
+          <div class="col-sm-10">
+            <h4>Block Users</h4>
+            <md-content class="md-padding">
+            <input type="hidden" ng-value="blockid=selectedItem.id" ng-model="blockid">
+           <form ng-submit="$event.preventDefault()">
+                 <md-autocomplete
+                  ng-disabled="isDisabled"
+                  md-no-cache="noCache"
+                  md-selected-item="selectedItem"
+                  md-search-text-change="querySearch(searchText)"
+                  md-search-text="searchText"
+                  md-selected-item-change="selectedItemChange(item)"
+                  md-items="item in data"
+                  md-item-text="item.username"
+                  md-min-length="0"
+                  placeholder="Find users"
+                   md-input-name="autocompleteField">
+             <md-item-template>
+           
+          <span class="item-title">
+          <a href class="pull-left w-32 m-r"> 
+             <ng-letter-avatar data={{item.username}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
+             </a>
+             <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.username}}</span>
+          </span>
+          <!-- <span class="item-metadata">
+            <span class="item-metastat">
+              <strong>{{item.email}}</strong> watchers
+            </span>
+            <span class="item-metastat">
+              <strong>{{item.username}}</strong> forks
+            </span>
+          </span> -->
+        </md-item-template>
+         <md-not-found>
+          No users matching "{{ctrl.searchText}}" were found.
+         
+        </md-not-found>
+             
+            </md-autocomplete>
+</form>
+</md-content>
+            
+             <button ng-click="block()" class="md-btn md-raised p-h-md">Submit</button>
+              
+          </div>
+
+        </div>
+
+        <div class="md-list-item" ng-repeat="blocklist in blockinglist">
+          <div class="md-list-item-left">
+            <img src="images/a0.jpg" class="w-full circle">
+          </div>
+          <div class="md-list-item-content">
+            <h3 style="padding-left: 0px" class="text-md">{{blocklist.username}}</h3>
+            <a href=""><small class="font-thin" ng-click="unblock(blocklist.id)">Unblock</small></a>
+          </div>
+        </div>    
+      </div>
+
+    </div>
+
+  </div>
+</div>

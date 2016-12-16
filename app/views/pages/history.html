@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-lg-8 col-md-9 col-sm-9" style="margin-bottom: 25px;">
+    <button md-ink-ripple type="submit" class="md-btn md-raised btn-block p-h-md {{app.setting.theme.primary}}" ng-click="showConfirm($event)" >Clear History</button>  
+  </div>
+  
+  <div class="col-lg-8 col-md-9 col-sm-9" dir-paginate="upload in uploads| itemsPerPage: usersPerPage" current-page="pagination.current" total-items="count">
+    <div class="card md-whiteframe-z2">
+      <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">×</a>    
+      <div class="card-body" style="padding: 0px;">
+        <div class="row" style="margin: 0px;">
+          <div class="col-sm-6" style="padding: 5px;">
+            <div class="p" style="padding: 0px;">
+              <a ui-sref="app.single({id:upload.history.id})">
+                <img width="100%"  ng-src="http://img.youtube.com/vi/{{upload.history.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-6" style="padding: 5px;">
+            <div class="p" style="padding: 0px;">
+              <h5><b><a ui-sref="app.single({id:upload.history.id})">{{upload.history.name}}</a></b></h5>
+              <h6><a ui-sref="app.single({id:upload.history.id})">{{upload.history.discription}}</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div ng-hide=!$root.id>
+      <dir-pagination-controls boundary-links=true on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+  </div>
+</div>  

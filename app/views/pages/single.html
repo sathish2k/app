@@ -1,0 +1,289 @@
+  <div class="row">
+    <div class="col-lg-8 col-md-7 col-sm-7">
+      <div class="row no-gutter">
+        <div class="col-xs-12">
+          <div class="card">
+          <div class="wrapper">
+           <div class="videocontent">
+            <video id='video' class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"></video>
+           </div>
+          </div>
+         
+            
+            <div class="card-body">
+              <h3 style="padding-left: 10px;margin-top: 5px;margin-bottom: 5px;">{{upload.name}}</h3>
+              <hr style="margin:0px;" />
+              <div class="row">
+                <div class="col-lg-9">
+                  <div class="p" style="padding-top: 0px;padding-bottom: 0px;">
+                    <h5><b>Language : </b>{{upload.language}}</h5>
+                    <h5><b>Genre : </b>{{upload.categories}}</h5>
+                    <h5><b>Views : </b>{{upload.views}}</h5>
+                  </div>  
+                </div>
+                <div class="col-lg-3" align="center">
+                  <div class="p" style="padding-top: 10px;padding-right:15px;">
+                  <div ng-show=$root.user!==upload.uploadername>
+                    <div  star-rating rating="starRating1" read-only="false" max-rating="5" click="click1(param)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)" ng-click="rate()"></div>
+                    </div>
+                    <div ng-show=$root.user==upload.uploadername>
+                    <div  star-rating rating="starRating1" read-only="true" max-rating="5" click="click1(param)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)" ></div>
+                    </div>
+                    <h4 align="center"><b>( {{$root.rating/$root.usercount |number:1}} / 5.0 )</b></h4>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin:0px;" />
+              <div class="row">
+                <div class="col-lg-9">
+                  <div class="card-heading" style="padding-top: 10px;">
+                    <a href class="pull-left w-32 m-r" style="width: 50px;">
+                        <img src="images/a6.jpg" class="w-full img-circle">
+                    </a>
+                    <div class="clear">
+                        <a href class="font-bold block">{{upload.uploadername}}</a>
+                        <div class="text-xxs font-thin text-muted">
+                        <div ng-if=$root.user!==upload.uploadername>
+                        <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ng-click="$root.isfollow? unfollow() : follow()">{{ $root.isfollow ? 'following' : 'Follow' }}</button>
+                          <!-- <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo"  ng-cloak ng-if=!$root.isfollow ng-click="follow()">Follow</button><button ng-cloak ng-if=$root.isfollow ng-click="unfollow()">Following</button> -->
+                          </div>
+                        </div>
+                    </div>  
+                  </div>
+                </div>
+                <div class="col-lg-3" align="center">
+                  <div class="card-heading" align="center" style="padding-top: 10px;">
+                    <button class="btn btn-icon btn-rounded btn-fb"
+                    socialshare
+                    socialshare-provider="facebook"
+                    socialshare-type="feed"
+                    socialshare-via="1875362482692584"
+                    socialshare-media="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg"
+                    socialshare-text="{{upload.name}}"
+                    socialshare-caption="{{upload.email}}"
+                    socialshare-url="{{url}}"
+                    socialshare-description="{{upload.discription}}"
+                    socialshare-popup-height="300"
+                    socialshare-popup-width="400"
+                    socialshare-trigger="click"><i class="fa fa-facebook"></i></button>
+
+                    <button class="btn btn-icon btn-rounded btn-danger"
+                    socialshare
+                    socialshare-provider="google"
+                    socialshare-media="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg"
+                    socialshare-text="{{upload.name}}"
+                    socialshare-caption="{{upload.email}}"
+                    socialshare-url="{{url}}"
+                    socialshare-popup-height="300"
+                    socialshare-popup-width="400"
+                    socialshare-trigger="click"><i class="fa fa-google-plus"></i></button>
+
+                    <button class="btn btn-icon btn-rounded btn-info"
+                    socialshare
+                    socialshare-provider="twitter"
+                    socialshare-via="Casttree_com"
+                    socialshare-text="{{upload.name}}"
+                    socialshare-url="{{url}}"
+                    socialshare-popup-height="300"
+                    socialshare-popup-width="400"
+                    socialshare-trigger="click"><i class="fa fa-twitter"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="md-whiteframe-z0 bg-white">
+                <ul class="nav nav-lines nav-tabs nav-justified">
+                  <li class="active">
+                    <a href data-toggle="tab" data-target="#tab_7">Description</a>
+                  </li>
+                  <li>
+                    <a href data-toggle="tab" data-target="#tab_8">crew</a>
+                  </li>
+                </ul>
+                <div class="tab-content p m-b-md clear b-t b-t-2x">
+                  <div role="tabpanel" class="tab-pane animated fadeInDown active" id="tab_7">
+                    <h4><b>Published on</b> : {{upload.createdAt.substr(0,10)}}</h4>
+                    <h5>{{upload.discription}}.</h5>
+                  </div>
+                  <div role="tabpanel" class="tab-pane animated fadeInDown" id="tab_8">
+                    <table class="table table-bordered table-hover table-condensed bg-white"  >
+                        <tr  style="font-weight: bold">
+                          <td style="width:20%">Name</td>
+                          <td style="width:20%">User Name</td>
+                          <td style="width:20%">Role</td>
+                        </tr>
+                        <tr ng-repeat="user in upload.crew">
+                          <td class="v-middle">
+                           <h5>{{user.name}}</h5>
+                          </td>
+                          <td class="v-middle">
+                            <a><h5 ui-sref="app.myprofile({user:user.username})">{{user.username}}</h5></a>
+                          </td>
+                          <td class="v-middle">
+                            <h5>{{user.role}}</h5>
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="card">
+            <form>
+              <textarea class="form-control no-border p-md" rows="3" ng-model="comments" placeholder="Comment..." style="resize: vertical;"></textarea>
+            </form>
+            <div class="lt p">
+              <button md-ink-ripple ng-click="add()" class="md-btn md-raised pull-right p-h-md {{app.setting.theme.accent}}">Add Comment</button>
+              <ul class="nav nav-pills nav-sm">
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="md-whiteframe-z0 bg-white">
+              <ul class="nav nav-lines nav-tabs nav-justified">
+                <li class="active">
+                  <a href  data-toggle="tab" data-target="#tab_1">All Comments</a>
+                </li>
+                <li>
+                  <a href  data-toggle="tab" ng-click="topcomments()" data-target="#tab_2">Top Comments</a>
+                </li>
+                <li>
+                  <a href data-toggle="tab" data-target="#tab_3" ng-click="mycomments()">My Comments</a>
+                </li>
+              </ul>
+              <div class="tab-content p m-b-md clear b-t b-t-2x">
+                <div role="tabpanel" class="tab-pane animated fadeInDown active" id="tab_1">
+                  <div class="card-heading" style="padding-top: 0px;" ng-repeat="commented in comment|orderBy:'-createdAt'">
+                    <a href class="pull-left w-32 m-r" style="width: 50px;">
+                        <img src="images/a6.jpg" class="w-full img-circle">
+                    </a>
+                         <div class="clear">
+                          <a href class="font-bold block">{{commented.email}}</a>
+                          <div class="text-xxs font-thin text-muted">
+                          <h6>{{commented.comments}} </h6>     
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                      <ul class="list-inline">
+                        <li class="dropdown">
+                          <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                            <i class="mdi-navigation-more-vert text-md"></i>
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                            <li><a href>Edit</a></li>
+                            <li><a href>Delete</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <hr style="margin:0px;" />
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane animated fadeInDown " id="tab_2">
+                  <div class="card-heading" style="padding-top: 0px;" ng-repeat="commented in topcomment">
+                    <a href class="pull-left w-32 m-r" style="width: 50px;">
+                        <img src="images/a6.jpg" class="w-full img-circle">
+                    </a>
+                    <div class="clear">
+                        <a href class="font-bold block">{{commented.email}}</a>
+                        <div class="text-xxs font-thin text-muted">
+                          <h6>{{commented.comments}} </h6>     
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                      <ul class="list-inline">
+                        <li class="dropdown">
+                          <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                            <i class="mdi-navigation-more-vert text-md"></i>
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                            <li><a href>Edit</a></li>
+                            <li><a href>Delete</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <hr style="margin:0px;" />
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane animated fadeInDown" id="tab_3">
+                  <div class="card-heading" style="padding-top: 0px;" ng-repeat="commented in usercomment">
+                    <a href class="pull-left w-32 m-r" style="width: 50px;">
+                        <img src="images/a6.jpg" class="w-full img-circle">
+                    </a>
+                    <div class="clear">
+                        <a href class="font-bold block">{{commented.email}}</a>
+                        <div class="text-xxs font-thin text-muted">
+                          <h6>{{commented.comments}}  </h6>     
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                      <ul class="list-inline">
+                        <li class="dropdown">
+                          <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                            <i class="mdi-navigation-more-vert text-md"></i>
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                            <li><a href>Edit</a></li>
+                            <li><a href>Delete</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <hr style="margin:0px;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-5 col-sm-5">
+      <h3>Up Next</h3>
+      <hr/>
+      <div class="card" ng-repeat="uservideo in users" ng-hide=uservideo.id==$root.userid>    
+        <div class="card-body" style="padding: 0px;">
+          <div class="row" style="margin: 0px;">
+            <div class="col-sm-6" style="padding: 5px;">
+              <div class="p" style="padding: 0px;">
+                <a ui-sref="app.single({id:uservideo.id})">
+                  <img width="100%" ng-src="http://img.youtube.com/vi/{{uservideo.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6" style="padding: 5px;">
+              <div class="p" style="padding: 0px;">
+                <h5><b><a ui-sref="app.single({id:uservideo.id})">{{uservideo.name |characters:45}}</a></b></h5>
+                <h6><a ui-sref="app.single({id:uservideo.id})">{{uservideo.discription|characters:55}}</a></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/> 
+      <div class="card" ng-hide=$root.uservideo==related.uploadername ng-repeat="related in relcat">    
+        <div class="card-body" style="padding: 0px;">
+          <div class="row" style="margin: 0px;">
+            <div class="col-sm-6" style="padding: 5px;">
+              <div class="p" style="padding: 0px;">
+                <a ui-sref="app.single({id:related.id})">
+                  <img width="100%"  ng-src="http://img.youtube.com/vi/{{related.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6" style="padding: 5px;">
+              <div class="p" style="padding: 0px;">
+                <h5><b><a ui-sref="app.single({id:related.id})">{{related.name |characters:45}}</a></b></h5>
+                <h6><a ui-sref="app.single({id:related.id})">{{related.discription|characters:55}}</a></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>

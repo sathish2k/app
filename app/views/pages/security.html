@@ -1,0 +1,39 @@
+<div class="col-sm-8">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading bg-white">
+          <h4><b>Security</b></h4>
+        </div>
+        <form>
+          <div class="panel-body">
+            <span class="font-bold">Change Password</span>
+            <div class="p">
+              <div class="row p">
+                <div class="md-form-group float-label">
+                  <input type="password" class="md-input" name="oldpassword" ng-model="oldpassword" required >
+                  <label>Old password</label>   
+                </div>
+                <div class="md-form-group float-label">
+                  <input type="password" class="md-input" name="new_password" ng-model="newpassword" required >
+                  <label>New password</label>   
+                </div>
+                <div class="md-form-group float-label">
+                  <input type="password" class="md-input" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' ">
+                  <label>Confirm password</label>
+                  <span ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span>
+                  <div class="p text-right">
+                    <button type="submit" class="md-btn md-raised p-h-md" ng-click="updatepass()" ng-disabled="form.$invalid">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div> 
+        </form>
+        <div class="panel-body">
+          <a ng-click="open()"><span class="font-bold">Deactivate My Account</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

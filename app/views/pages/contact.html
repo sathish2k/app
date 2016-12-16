@@ -1,0 +1,90 @@
+<div class="center-block w-xxl1 w-auto-xs p-v-md " >
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+         <img src="images/main-logo.png" height="50px">
+      </div>
+    </div>
+    <div class="panel md-whiteframe-z1 text-color m">
+      <div class="panel-heading bg-white">
+        <h4><b>Contact Details</b></h4>
+      </div>
+      <hr style="margin: auto;"/>
+      <form name="form">
+        <div class="panel-body">
+          <span class="font-bold">WebSite</span>
+          <md-input-container class="md-block" style="margin-bottom: 0px;">
+                <label>Website URL</label>
+                <input  name="Website" ng-model='website' required="" >
+                <div ng-messages="user.Website.$error">
+                  <div ng-message="pattern"></div>
+                </div>
+              </md-input-container>
+          <span class="font-bold">Social Profile</span>
+          <div class="row">
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px; ">
+                <label>Facebook URL</label>
+                <input  name="fb" ng-model='fburl' >
+                <div ng-messages="user.fb.$error">
+                  <div ng-message="pattern">Facebook</div>
+                </div>
+              </md-input-container> 
+            </div>
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>Twitter URL</label>
+                <input  name="twitter" ng-model='twitterurl' >
+                <div ng-messages="user.fb.$error">
+                  <div ng-message="pattern">Twitter</div>
+                </div>
+              </md-input-container>        
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>Google Plus URL</label>
+                <input  name="gplus" ng-model='googleurl' >
+                <div ng-messages="user.gplus.$error">
+                  <div ng-message="pattern"></div>
+                </div>
+              </md-input-container> 
+            </div>
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>Instagram URL</label>
+                <input  name="insta" ng-model='instagramurl' >
+                <div ng-messages="user.insta.$error">
+                  <div ng-message="pattern"></div>
+                </div>
+              </md-input-container>        
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>Youtube channel URL</label>
+                <input  name="youtube" ng-model='youtubeurl' >
+                <div ng-messages="user.youtube.$error">
+                  <div ng-message="pattern"></div>
+                </div>
+              </md-input-container> 
+            </div>
+            <div class="col-sm-6 m-b">
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
+                <label>LinkedIn URL</label>
+                <input  name="in" ng-model='linkedinurl' >
+                <div ng-messages="user.in.$error">
+                  <div ng-message="pattern"></div>
+                </div>
+              </md-input-container>        
+            </div>
+          </div>
+          <footer class="p text-right">
+            <button ng-click="getpersonaldetail()" ui-sref="access.personaldetail" class="md-btn md-raised p-h-md"> Previous</button>
+            <button ng-click="socialdetail()" ui-sref="access.contactdetail" class="md-btn md-raised p-h-md"> Next</button>
+
+          </footer>
+      </form>
+    </div>
+  </div>

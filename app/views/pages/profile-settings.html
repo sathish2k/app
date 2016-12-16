@@ -1,0 +1,115 @@
+<div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading bg-white">
+            <h4><b>Profile</b></h4>
+          </div>
+          <form>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-6 m-b">
+                  <div class="md-form-group float-label">
+                    <input type="text" class="md-input" ng-model="firstname" required>
+                    <label>First Name</label>
+                  </div>   
+                </div>
+                <div class="col-sm-6 m-b">
+                  <div class="md-form-group float-label">
+                    <input type="text" class="md-input" ng-model="lastname" required>
+                    <label>Last Name</label>
+                  </div>
+                </div>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="username" ng-pattern="/^[a-zA-Z0-9]{4,10}$/" required>
+                  <label>Username</label>
+              </div>
+              
+              <div class="md-form-group float-label">
+                <input type="email" class="md-input" ng-model="email" required >
+                <label>Email</label>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 m-b">
+                  <div class="md-form-group float-label">
+                    <input type="text" class="md-input" ng-model="mobilenumber" required >
+                    <label>Phone</label>
+                  </div>   
+                </div>
+                <div class="col-sm-6 m-b">
+                  <md-input-container flex>
+                    <label style="font-size: large;">Gender</label>
+                  <select class="md-input" ng-model="gender" required >
+                    <option value="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                  </md-input-container>
+                </div>
+              </div>
+                            
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="website">
+                  <label>Website</label>
+              </div>
+              
+              <div class="md-form-group float-label">
+                <input type="text" class="md-input" ng-model="status">
+                <label>Status</label>
+              </div>   
+                            
+              <div class="md-form-group float-label">
+                <input type="text" class="md-input" ng-model="about">
+                <label>About</label>
+              </div>
+
+            <footer class="p text-right">
+              <button type="submit" class="md-btn md-raised p-h-md" ng-click="personaldetail()" ng-disabled="form.$invalid">Submit</button>
+            </footer>
+          </form>
+        </div>  
+      </div>
+    </div>
+    <div class="">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading bg-white">
+            <h4><b>Social Link</b></h4>
+          </div>
+          <form>
+            <div class="panel-body">
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="fburl">
+                  <label>Facebock Profile link</label>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="twitterurl">
+                  <label>Twitter Profile link</label>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="googleurl">
+                  <label>google plus Profile link</label>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="instagramurl">
+                  <label>Instagram Profile link</label>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="youtubeurl">
+                  <label>YouTube Profile link</label>
+              </div>
+              <div class="md-form-group float-label">
+                  <input type="text" class="md-input" ng-model="linkedinurl">
+                  <label>LinkedIn Profile link</label>
+              </div>
+
+            </div>
+            <footer class="p text-right">
+              <button type="submit" class="md-btn md-raised p-h-md" ng-click="socialdetail()" ng-disabled="form.$invalid">Submit</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+{
+  "name": "hr-angular-youtube",
+  "version": "0.0.10",
+  "authors": [
+    "Hernan Rajchert <hrajchert@gmail.com>"
+  ],
+  "description": "Youtube videos with custom configurable controls for Angular.js",
+  "main": [
+    "dist/hr-angular-youtube-tpl.js",
+    "dist/hr-angular-youtube.css"
+  ],
+  "keywords": [
+    "angular",
+    "youtube",
+    "directive",
+    "video",
+    "html5"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "assets",
+    "node_modules",
+    "src",
+    "gulpfile.js",
+    ".jshintrc",
+    "bower_components",
+    "test",
+    "tests",
+    "demo"
+  ],
+  "dependencies": {
+    "hr-angular-extend": "*"
+  },
+  "homepage": "https://github.com/hrajchert/hr-angular-youtube",
+  "_release": "0.0.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.10",
+    "commit": "33e61bcfd4fdec4ca2c098ea91a8efefe799b359"
+  },
+  "_source": "https://github.com/hrajchert/hr-angular-youtube.git",
+  "_target": "^0.0.10",
+  "_originalSource": "hr-angular-youtube",
+  "_direct": true
+}

@@ -1,0 +1,64 @@
+<div style="width: 300px;float: right;">
+<form>
+  <div class="input-group stylish-input-group">
+   <input type="text" ng-model=searchvideo class="form-control" placeholder="Search Videos">
+    <span class="input-group-addon">
+    <button type="submit" ui-sref="app.uservideosearch({contains:(searchvideo),uploaderid:videos[0].uploaderid})">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>  
+    </span>
+  </div>
+</form>
+</div>
+
+<div class="row md-clok">
+  <div class="col-lg-12">
+    <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">My Uploads</h3>
+
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
+    <div class="col-lg-4 col-md-6 col-sm-6" ng-repeat="video in videos">
+      <div class="card md-whiteframe-z3" >
+        <div class="card-heading">
+        <div class="row">
+          <div class="clear col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <span>Views:<span style="padding-left:4px;">{{video.views}}</span></span>
+           </div>
+           <div class="clear col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: left">
+              <span>Rating:<span style="padding-left:4px;">{{(video.rating)/(video.usercount)||0 |number:1}} </span></span>
+           </div>
+           </div>
+           <div class="card-tools">
+           <ul class="list-inline">
+                      <li class="dropdown">
+                        <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                          <i class="mdi-navigation-more-vert text-md"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                          <li><a ui-sref="app.uploadedit({id:video.id})">Edit</a></li>
+                          <li><a ng-click="del(video.id)">Delete</a></li>
+                          <li><a href>Status</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+           </div>
+        </div>
+        <div class="item">
+          <a ui-sref="app.single({id:video.id})">
+            <img width="100%" ng-src="http://img.youtube.com/vi/{{video.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
+          </a>  
+        </div>
+        <div class="card-body">
+          <h3 style="padding-left: 0px;margin-top: 10px;"><a ui-sref="app.single({id:video.id})">{{video.name}}</a></h3>
+          <div>
+            <hr style="margin:0px;" />
+            <h5><b>Category : </b>{{video.categories}}</h5>
+            <h5><b>comments : </b>988</h5>
+          
+          </div>
+         
+        </div>    
+      </div>
+    </div>  
+          </div>           
+        </div>    
+     
