@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Admin web application template with Bootstrap 3 and AngularJS.",
   "scripts": {
-    "start": "node node_modules/http-server/bin/http-server -o"
+    "start": "node_modules/http-server/bin/http-server -o"
   },
   "keywords": [],
   "repository": "",
