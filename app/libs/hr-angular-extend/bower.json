@@ -1,0 +1,27 @@
+{
+  "name": "hr-angular-extend",
+  "version": "0.0.1",
+  "authors": [
+    "Hernan Rajchert <hrajchert@gmail.com>"
+  ],
+  "main": "src/hrAngularExtend.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords" : [
+    "angular", 
+    "dependency", 
+    "factory", 
+    "service", 
+    "extend"
+  ] ,
+  "devDependencies": {
+    "angular": "~1.3.5",
+    "angular-mocks": "~1.3.5"
+  }
+}
