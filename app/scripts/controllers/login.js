@@ -36,6 +36,7 @@ angular.module('app')
     $localStorage.$reset();
       delete $rootScope.id;
       delete $rootScope.follow;
+      delete $rootScope.isfollow;
       delete $rootScope.user;
       delete $localStorage.user;
       delete $localStorage.follow;
@@ -288,7 +289,13 @@ angular.module('app')
   })
   .run(['$rootScope', '$state', '$localStorage',  function ($rootScope, $state, $localStorage)
     {
-
+           $rootScope.$on('$stateChangeError', function(event) {
+         $state.go('app');
+        });
+           $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
+            console.log(fromState.name)
+        $state.previous = fromState.name;
+    });
         var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, toState)
         {
 
@@ -303,6 +310,10 @@ angular.module('app')
              $state.go('access.signin');
             }
              $rootScope.id=$localStorage.id;
+             if(toState.data.alreadylogin=='true' && $localStorage.token){
+              event.preventDefault();
+             $state.go('access.forgot-password');
+             }
          
             if($localStorage.token){
               console.log('enter')
