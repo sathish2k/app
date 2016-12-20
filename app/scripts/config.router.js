@@ -104,13 +104,13 @@ angular.module('app')
     .state('access.signin', {
       url: '/signin/:id?token',
       templateUrl: 'views/pages/signin.html',
-      data : { title: 'signin'},
+      data : { title: 'signin',alreadylogin:'true'},
       controller: 'LoginCtrl'
     })
     .state('access.signup', {
       url: '/signup',
       templateUrl: 'views/pages/signup.html',
-      data : { title: 'signup'},
+      data : { title: 'signup',alreadylogin:'true'},
       controller: 'RegisterCtrl',
       resolve: load('scripts/controllers/register.js')
     })

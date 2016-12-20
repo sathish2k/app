@@ -22,7 +22,7 @@ angular
     'ui.router',
     'ui.utils',
     'autocomplete',
-    // 'ui.bootstrap',
+    'infinite-scroll',
     'ui.load',
     'ui.jp',
     'pascalprecht.translate',

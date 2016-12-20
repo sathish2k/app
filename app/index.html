@@ -1,10 +1,11 @@
 <!DOCTYPE html >
 <html lang="en" ng-app="app">
 <head>
-  <meta charset="utf-8" />
-
+ <!--  <meta charset="utf-8" /> -->
+<base href="/">
   <title ng-bind="$state.current.data.title + ' | casttree'">casttree</title>
-  <meta name="description" content="material, material design, angular material, app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="description"  content="{{$root.metadescription}}" />
+  <meta name="keywords"  content="{{ $root.metakeywords }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -47,9 +48,10 @@
   <script src="../libs/autocomplete.js"></script>
   <script src="../libs/sails.io.js/dist/sails.io.js"  ></script>
   <script type="text/javascript">
-  io.sails.url = 'https://sailsserver.herokuapp.com';
+  io.sails.url = 'http://localhost:1337';
 </script>
-
+<!-- infinite scroll -->
+<script src="../libs/ng-infinite-scroll.js"></script>
   <!-- Vendor -->
   <script src="../libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="../libs/angular/ngstorage/ngStorage.js"></script>
@@ -69,7 +71,7 @@
   <script src="../libs/angular/angular-loading-bar/build/loading-bar.js"></script>
   <!-- youtube player -->
   <script src="../libs/video.js/dist/video.js"></script>
-  <script src="../libs/videojs-youtube/src/Youtube.js"></script>
+  <script src="../libs/videojs-youtube/dist/Youtube.js"></script>
   <script src="../libs/lib/videojs-resolution-switcher.js"></script>
   <!-- Share -->
   <script src="../libs/angular-socialshare/dist/angular-socialshare.js"></script>
@@ -100,11 +102,13 @@
   <script src="scripts/services/ngstore.js"></script>
   <script src="scripts/services/ui-load.js"></script>
   <script src="scripts/services/authinterceptor.js"></script>
+  <script src="scripts/services/newservice.js"></script>
   <script src="scripts/controllers/login.js"></script>
   <script src="scripts/controllers/notification.js"></script>
   <script src="scripts/controllers/report.js"></script>
   <script src="scripts/controllers/demo.js"></script>
 <script src="scripts/controllers/message.js"></script>
+<script src="scripts/controllers/getmsg.js"></script>
 
 </body>
 </html>
