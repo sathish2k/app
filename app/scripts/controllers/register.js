@@ -17,7 +17,7 @@ else{
   var checkobj={};
   console.log($scope.email)
   checkobj.email=$scope.email;
-  $http.post('http://sailsserver.herokuapp.com/auth/signupcheck',checkobj ).success(function(resp){
+  $http.post('https://sailsserver.herokuapp.com/auth/signupcheck',checkobj ).success(function(resp){
           console.log(resp);
 console.log('check');
 $scope.message=resp.message;
@@ -38,7 +38,7 @@ else{
   var checkuserobj={};
   console.log($scope.username)
   checkuserobj.username=$scope.username;
-  $http.post('http://sailsserver.herokuapp.com/auth/usercheck',checkuserobj ).success(function(resp){
+  $http.post('https://sailsserver.herokuapp.com/auth/usercheck',checkuserobj ).success(function(resp){
           console.log(resp);
 console.log('check');
 $scope.usermessage=resp.message;
@@ -58,7 +58,7 @@ $scope.usermessage=resp.message;
 		console.log(signupObj);
 
 
-		$http.post('http://sailsserver.herokuapp.com/auth/signup', signupObj).success(function(resp){
+		$http.post('https://sailsserver.herokuapp.com/auth/signup', signupObj).success(function(resp){
 	        console.log(resp);
 	        $scope.signupsuccess();
           $state.go("access.verification", {

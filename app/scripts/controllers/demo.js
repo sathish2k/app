@@ -13,7 +13,7 @@
     
     self.querySearch = function (searchText) {
       $http({
-     url: 'http://sailsserver.herokuapp.com/user/?sort=name ASC', 
+     url: 'https://sailsserver.herokuapp.com/user/?sort=name ASC', 
      method: "GET",
      params: {where:{"username":{"contains":searchText} } } }).then(function(result){
       console.log(result)

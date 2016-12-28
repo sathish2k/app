@@ -3,7 +3,7 @@
 angular.module('app')
   .controller('ProfilevideoCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
   $http({
-     url: "http://sailsserver.herokuapp.com/uploads", 
+     url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
      params: {uploadername:$stateParams.user}  
 }).then(function(res){
@@ -16,7 +16,7 @@ $scope.videos=res.data;
 
 $scope.del=function(id){
   $http({
-    url: 'http://sailsserver.herokuapp.com/uploads', 
+    url: 'https://sailsserver.herokuapp.com/uploads', 
     method: "DELETE",
     params: {id: id}
    }).then(function(res)
@@ -24,7 +24,7 @@ $scope.del=function(id){
   $scope.get();
     console.log(res);
     $http({
-    url: 'http://sailsserver.herokuapp.com/history/userdelete', 
+    url: 'https://sailsserver.herokuapp.com/history/userdelete', 
     method: "DELETE",
     params: {historyid: id}
    }).then(function(res)
@@ -42,7 +42,7 @@ $scope.del=function(id){
 $scope.get=function(){
 
  $http({
-     url: "http://sailsserver.herokuapp.com/uploads", 
+     url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
      params: {uploadername:$stateParams.user,limit:1}  
 }).then(function(res){
@@ -60,7 +60,7 @@ $scope.search=function(){
 console.log($scope.searchvideo)
 
   $http({
-     url: 'http://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
+     url: 'https://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
      method: "GET",
      params: {where:{"name":{"contains":$scope.searchvideo},"uploadername":$stateParams.user},limit:4}  
 }).then(function(res){
@@ -72,7 +72,7 @@ console.log($scope.videos)
   });
 
 $http({
-     url: 'http://sailsserver.herokuapp.com/uploads/count', 
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
      method: "GET",
      params: {where:{"name":{"contains":$scope.searchvideo},"uploadername":$stateParams.user}}  
 }).then(function(res){
@@ -89,7 +89,7 @@ console.log($scope.count)
 $scope.more=function(){
   $scope.page++;
 $http({
-     url: 'http://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
+     url: 'https://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
      method: "GET",
      params: {where:{"name":{"contains":$scope.searchvideo},"uploadername":$stateParams.user},limit:10,skip:($scope.page-1)*4}  
 }).then(function(res){

@@ -2,7 +2,7 @@ angular.module('app')
   .controller('SettingsCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast) {
   	
   $http({
-     url: "http://sailsserver.herokuapp.com/user", 
+     url: "https://sailsserver.herokuapp.com/user", 
      method: "GET",
      params: {id:$rootScope.id}  
  }).then(function(res){
@@ -33,7 +33,7 @@ $scope.showblocklist();
   });
 $scope.showblocklist=function(){
  $http({
-     url: "http://sailsserver.herokuapp.com/user", 
+     url: "https://sailsserver.herokuapp.com/user", 
      method: "GET",
      params: {where:{"id":$rootScope.blockeduser}} 
 
@@ -56,7 +56,7 @@ console.log(res)
     personalobj.city=$scope.city;
     personalobj.pincode=$scope.pincode;
 
-    $http.post('http://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
 
     console.log(resp);
    $scope.contactdetail();
@@ -73,7 +73,7 @@ console.log(res)
     console.log($scope.mobilenumber)
     contactobj.otp=$scope.otp;
 
-      $http.post('http://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
 
         console.log(resp);
         
@@ -81,7 +81,7 @@ console.log(res)
     }
      $scope.userupdate=function(){
     $http({
-     url: "http://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
+     url: "https://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
      method: "PUT",
      params: {email:$scope.email,username:$scope.username}  
     }).then(function(res){
@@ -106,7 +106,7 @@ console.log(res)
     socialobj.youtubeurl=$scope.youtubeurl;
     socialobj.linkedinurl=$scope.linkedinurl;
 
-      $http.post('http://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
 
         console.log(resp);
 
@@ -122,7 +122,7 @@ console.log(res)
     blockobj.owner=$rootScope.id;
     
     
-    $http.post('http://sailsserver.herokuapp.com/user/block',blockobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/user/block',blockobj).success(function(resp){
       console.log(resp);
        $scope.showblocklist();
     }).error(function(err){
@@ -137,7 +137,7 @@ console.log(res)
    console.log(id)
     unblockobj.vidsid=id;
     unblockobj.id=$rootScope.id;
-    $http.post('http://sailsserver.herokuapp.com/user/removeblock',unblockobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/user/removeblock',unblockobj).success(function(resp){
       console.log(resp);
       $scope.showblocklist();
     }).error(function(err){
@@ -152,7 +152,7 @@ console.log(res)
     
     $scope.querySearch = function (searchText) {
       $http({
-     url: 'http://sailsserver.herokuapp.com/user/?sort=name ASC', 
+     url: 'https://sailsserver.herokuapp.com/user/?sort=name ASC', 
      method: "GET",
      params: {where:{"username":{"contains":searchText} } } }).then(function(result){
       console.log(result)
@@ -167,7 +167,7 @@ $scope.uploadFile = function(files){
 
         fd.append("file", files[0]);
 
-        $http.post('http://sailsserver.herokuapp.com/user/uploadavatar', fd, {
+        $http.post('https://sailsserver.herokuapp.com/user/uploadavatar', fd, {
             headers: {'Content-Type': undefined},
             transformRequest: angular.identity          
         }).then(function(res){
@@ -185,7 +185,7 @@ $scope.uploadFile = function(files){
      console.log($scope.oldpassword)
       console.log($scope.newpassword)
      
-     $http.post('http://sailsserver.herokuapp.com/auth/updatepass', obj).success(function(resp){
+     $http.post('https://sailsserver.herokuapp.com/auth/updatepass', obj).success(function(resp){
      console.log(resp);
      $scope.oldpassword='';
      $scope.newpassword='';

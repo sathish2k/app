@@ -68,7 +68,7 @@ var app=angular.module('app')
 
 
    $http({
-     url: "http://sailsserver.herokuapp.com/uploads", 
+     url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
      params: {id:$stateParams.id}  
  }).then(function(res){
@@ -101,7 +101,7 @@ var app=angular.module('app')
 
 		console.log(uploadObj);
 
-		$http.post('http://sailsserver.herokuapp.com/uploads/add', uploadObj).success(function(resp){
+		$http.post('https://sailsserver.herokuapp.com/uploads/add', uploadObj).success(function(resp){
 	        console.log(resp);
           $scope.success();
          
@@ -138,7 +138,7 @@ var app=angular.module('app')
     
     $scope.querySearch = function (searchText) {
       $http({
-     url: 'http://sailsserver.herokuapp.com/user/?sort=name ASC', 
+     url: 'https://sailsserver.herokuapp.com/user/?sort=name ASC', 
      method: "GET",
      params: {where:{"username":{"contains":searchText} } } }).then(function(result){
       console.log(result)

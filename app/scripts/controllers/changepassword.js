@@ -8,7 +8,7 @@ angular.module('app')
   obj.password=$scope.password;
   console.log($scope.password)
   console.log($stateParams.token)
-$http.post('http://sailsserver.herokuapp.com/auth/changepassword', obj).success(function(resp){
+$http.post('https://sailsserver.herokuapp.com/auth/changepassword', obj).success(function(resp){
           console.log(resp);
           $rootScope.changeerror=resp.message;
           $scope.success();

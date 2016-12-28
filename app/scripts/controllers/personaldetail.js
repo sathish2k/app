@@ -15,7 +15,7 @@ personalobj.state=$scope.state;
 personalobj.city=$scope.city;
 personalobj.pincode=$scope.pincode;
 
-  $http.post('http://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
+  $http.post('https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
 
     console.log(resp);
 
@@ -25,7 +25,7 @@ personalobj.pincode=$scope.pincode;
 }
 $scope.personalupdade=function(){
 	 $http({
-     url: "http://sailsserver.herokuapp.com/user/"+ $rootScope.firstlogin, 
+     url: "https://sailsserver.herokuapp.com/user/"+ $rootScope.firstlogin, 
      method: "PUT",
      params: {form1:true}  
 }).then(function(res){
@@ -47,7 +47,7 @@ socialobj.instagramurl=$scope.instagramurl;
 socialobj.youtubeurl=$scope.youtubeurl;
 socialobj.linkedinurl=$scope.linkedinurl;
 
-  $http.post('http://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
+  $http.post('https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
 
     console.log(resp);
 
@@ -57,7 +57,7 @@ socialobj.linkedinurl=$scope.linkedinurl;
 }
 $scope.userupdade=function(){
 	 $http({
-     url: "http://sailsserver.herokuapp.com/user/"+ $rootScope.firstlogin, 
+     url: "https://sailsserver.herokuapp.com/user/"+ $rootScope.firstlogin, 
      method: "PUT",
      params: {form2:true}  
 }).then(function(res){
@@ -75,7 +75,7 @@ contactobj.owner=$rootScope.firstlogin;
 contactobj.mobilenumber=$scope.mobilenumber;
 contactobj.otp=$scope.otp;
 
-  $http.post('http://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
+  $http.post('https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
 
     console.log(resp);
 
@@ -86,7 +86,7 @@ contactobj.otp=$scope.otp;
 
 $scope.contactupdate=function(){
 	 $http({
-     url: "http://sailsserver.herokuapp.com/user/"+$rootScope.firstlogin, 
+     url: "https://sailsserver.herokuapp.com/user/"+$rootScope.firstlogin, 
      method: "PUT",
      params: {form3:true}  
 }).then(function(res){

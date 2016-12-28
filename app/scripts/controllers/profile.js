@@ -9,7 +9,7 @@ angular.module('app')
 
 
   $http({
-     url: "http://sailsserver.herokuapp.com/user", 
+     url: "https://sailsserver.herokuapp.com/user", 
      method: "GET",
      params: {username:$stateParams.user}  
 }).then(function(res){
@@ -31,7 +31,7 @@ angular.module('app')
 
 
 $http({
-     url: 'http://sailsserver.herokuapp.com/uploads/count', 
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
      method: "GET" ,
      params:{uploadername:$stateParams.user}
 }).then(function(res){
@@ -44,7 +44,7 @@ $http({
 $scope.get=function(){
 
 $http({
-     url: 'http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
+     url: 'https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
      method: "GET",
      params:  {where:{"uploaderid":$rootScope.userfollow}}  
 }).then(function(res){
@@ -58,7 +58,7 @@ console.log($rootScope.follow)
 var postobj={};
 postobj.username=$stateParams.user;
 
-$http.post('http://sailsserver.herokuapp.com/user/show',postobj).then(function(res){
+$http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(res){
   console.log(res)
   $scope.followingcount=res.data.following;
    $scope.followerscount=res.data.followers;
@@ -85,7 +85,7 @@ var fobj={};
     fobj.vidsid=$stateParams.user;
     fobj.id=$rootScope.id;
     console.log(fobj)
-    $http.post('http://sailsserver.herokuapp.com/user/checkprofileuser',fobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/user/checkprofileuser',fobj).success(function(resp){
       console.log(resp);
       $rootScope.isfollow=resp.user;
     }).error(function(err){
@@ -97,7 +97,7 @@ $scope.follow=function(){
     subobj.id=$rootScope.profileid;
     subobj.owner=$rootScope.id;
    
-    $http.post('http://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
       console.log(resp);
        $rootScope.isfollow=resp.user;
        $localStorage.follow=resp.userdata.following;
@@ -112,7 +112,7 @@ $scope.follow=function(){
    var unsubobj={};
     unsubobj.vidsid=$rootScope.profileid;
     unsubobj.id=$rootScope.id;
-    $http.post('http://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
       console.log(resp);
        $rootScope.isfollow=resp.user;
        $localStorage.follow=resp.userdata.following;
@@ -126,7 +126,7 @@ $scope.followupdate=function(){
 var postobj={};
 postobj.username=$stateParams.user;
 
-$http.post('http://sailsserver.herokuapp.com/user/show',postobj).then(function(res){
+$http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(res){
   console.log(res)
   $scope.followingcount=res.data.following;
    $scope.followerscount=res.data.followers;
