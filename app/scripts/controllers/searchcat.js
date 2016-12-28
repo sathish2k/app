@@ -10,7 +10,11 @@ angular.module('app')
     $scope.pagination = {
       current:1
     };
+$scope.search=function(nestedsearch){
+  $stateParams.contains=nestedsearch;
+  getResultsPage(1);
 
+}
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);
     };
