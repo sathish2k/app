@@ -2,7 +2,7 @@
 
 var app=angular.module('app');
 
-  app.controller('SingleCtrl', function($scope,$stateParams,$http,$location,$localStorage,$rootScope,messageservice) {
+  app.controller('SingleCtrl', function($scope,$stateParams,$http,$location,$localStorage,$rootScope,messageservice,$window) {
     if($localStorage.token){
   var fobj={};
   console.log('follow')
@@ -28,7 +28,10 @@ var app=angular.module('app');
 
   $scope.upload = res.data;
   $rootScope.history=res.data;
+  var screenwidth=$window.innerWidth;
+  if(screenwidth>600){
   $rootScope.$state.current.data.title=res.data.name;
+}
   $rootScope.metatag=res.data.tag;
   $rootScope.metadescription=res.data.discription;
   $rootScope.average=$rootScope.rating/$rootScope.usercount;
