@@ -41,5 +41,21 @@ angular.module('app')
 	 	$scope.count = res.data.count;
     console.log($scope.count);
 	});
+
+
+$scope.search()=function(){
+
+  $http({
+     url: 'https://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
+     method: "GET",
+     params: {where:{"name":{"contains":searchlist},language:$stateParams.language,categories:$stateParams.categories},limit:$scope.usersPerPage,skip:(pageNumber- 1) * $scope.usersPerPage}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.uploads = res.data;
+
+  });
+}
    });
 
