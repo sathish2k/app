@@ -1310,7 +1310,7 @@ a.list-group-item.hover {
 .navbar .navbar-tool > li > a,
 .navbar .navbar-item,
 .navbar .navbar-brand {
-  padding-left: 6px;
+  padding: 0 6px;
   line-height: 64px;
 
 }
