@@ -1,7 +1,7 @@
 <div style="width: 300px;float: right;">
-<form>
+<form ng-submit=search(nestedsearch)>
   <div class="input-group stylish-input-group">
-   <input type="text" class="form-control"  placeholder="Search Videos">
+   <input type="text" class="form-control" ng-model="nestedsearch"  placeholder="Search Videos">
     <span class="input-group-addon">
     <button type="submit">
       <span class="glyphicon glyphicon-search"></span>

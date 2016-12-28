@@ -11,6 +11,12 @@ angular.module('app')
       current:1
     };
 
+$scope.search=function(nestedsearch){
+  $stateParams.contains=nestedsearch;
+  getResultsPage(1);
+
+}
+
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);
     };
