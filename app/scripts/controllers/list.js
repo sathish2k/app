@@ -43,7 +43,7 @@ angular.module('app')
 	});
 
 
-$scope.search()=function(){
+$scope.search=function(){
 
   $http({
      url: 'https://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
