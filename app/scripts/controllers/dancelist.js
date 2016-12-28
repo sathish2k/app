@@ -11,7 +11,7 @@ angular.module('app')
     $scope.pagination = {
       current:1
     };
-
+$scope.categoryname=$stateParams.categories;
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);
     };
