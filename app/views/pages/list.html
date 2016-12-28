@@ -1,9 +1,9 @@
 <div style="width: 300px;float: right;">
-<form ng-submit="search(searchlist)">
+<form >
   <div class="input-group stylish-input-group">
    <input type="text" class="form-control" ng-model="searchlist" placeholder="Search Videos">
     <span class="input-group-addon">
-    <button type="submit">
+    <button type="submit" ui-sref="app.searchcat({contains:(searchlist),categories:(categoryname)})">
       <span class="glyphicon glyphicon-search"></span>
     </button>  
     </span>

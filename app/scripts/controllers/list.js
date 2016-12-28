@@ -11,7 +11,7 @@ angular.module('app')
     $scope.pagination = {
       current:1
     };
-
+$scope.categoryname=$stateParams.categories;
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);
     };
@@ -43,19 +43,6 @@ angular.module('app')
 	});
 
 
-$scope.search=function(searchlist){
 
-  $http({
-     url: 'https://sailsserver.herokuapp.com/uploads/?sort=name ASC', 
-     method: "GET",
-     params: {where:{"name":{"contains":searchlist},language:$stateParams.language,categories:$stateParams.categories},limit:$scope.usersPerPage,skip:(pageNumber- 1) * $scope.usersPerPage}  
-}).then(function(res){
-
-    console.log(res);
-
-    $scope.uploads = res.data;
-
-  });
-}
    });
 
