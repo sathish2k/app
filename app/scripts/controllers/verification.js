@@ -7,7 +7,7 @@ var app=angular.module('app');
    $scope.resendmail=function(){
   var obj={};
   obj.email=$stateParams.email;
-$http.post(' https://sailsserver.herokuapp.com/auth/resendmail', obj).success(function(resp){
+$http.post('https://sailsserver.herokuapp.com/auth/resendmail', obj).success(function(resp){
           console.log(resp);
           $rootScope.resenderror=resp.message;
           $scope.success();

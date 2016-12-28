@@ -54,7 +54,7 @@ $http({
   });
 if($localStorage.token){
 //   $http({
-//      url: "https://sailsserver.herokuapp.com/user", 
+//      url: " /user", 
 //      method: "GET",
 //      params: {id:$rootScope.id}  
 // }).then(function(res){

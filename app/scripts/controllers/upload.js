@@ -124,9 +124,10 @@ var app=angular.module('app')
     
     $scope.data = null;
     $scope.selectedItem = null;
-    $scope.searchText = null;
+    
     
     $scope.querySearch = function (searchText) {
+      console.log(searchText)
       $http({
      url: 'https://sailsserver.herokuapp.com/user/?sort=name ASC', 
      method: "GET",

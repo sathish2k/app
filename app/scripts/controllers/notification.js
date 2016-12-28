@@ -2,16 +2,56 @@
 
 var app=angular.module('app')
   app.controller('NotifyCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast) {
-$scope.notify=[];
-$rootScope.messages=[];
-  	$http.get("https://sailsserver.herokuapp.com/notification?ownerid="+$rootScope.user).then(function(result){
-     console.log(result);
+
+    $http({
+     url: 'https://sailsserver.herokuapp.com/notification' +'/count', 
+     method: "GET",
+     params:  {ownerid:$rootScope.user}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.count = res.data.count;
+    console.log($scope.count);
+    
+  });
+  
+$scope.page = 1;
+ 
+  $scope.notify=[];
+ $scope.fetching=false;
+  $scope.usersPerPage=9;
+  console.log('start')
+  $scope.getMore = function() {
+   if($scope.fetching) return;
+   console.log('another')
+    if($scope.notify.length>=$scope.count) return;
+    console.log($scope.count)
+    $scope.fetching=true;
+  console.log('trigger')
+     $http({
+     url: 'https://sailsserver.herokuapp.com/notification/', 
+     method: "GET",
+     params: {ownerid:$rootScope.user,limit:$scope.usersPerPage,skip:($scope.page- 1) * $scope.usersPerPage}  
+}).then(function(result){
+
+    console.log(result);
+     
      for(var i=0; i<result.data.length;i++){
         $scope.notify.push(result.data[i])
+       
       }
-     console.log($scope.notify);
-  	});
+    $scope.fetching=false;
+    console.log($scope.notify);
+    
+  });
+
+  $scope.page +=1;
+  console.log($scope.page)
+  };
   
+ 
+
   io.socket.on('notification',function(event) {
 	console.log(event)
     $scope.notify.push(event);
@@ -19,24 +59,7 @@ $rootScope.messages=[];
     $scope.$apply();
  })
 
-  $http.get("https://sailsserver.herokuapp.com/user").success(function(result){
-     console.log(result);
-     $scope.users=result;
-   })
-$scope.getoldmsg=function(username){
-$rootScope.touser=username;
-   $http({
-     url: 'https://sailsserver.herokuapp.com/messages', 
-     method: "GET"
-}).then(function(res){
-  console.log(res)
-  for(var i=0; i<res.data.length;i++){
-        $rootScope.messages.push(res.data[i])
-      }
-  console.log($scope.messages)
-})
-
-}
+ 
 
 
 });

@@ -33,7 +33,7 @@
         </div>
         <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">23</a>
         <div class="card-body">
-          <h3 style="padding-left: 0px;margin-top: 10px;"><a ui-sref="app.single({id:upload.id})">Paracosm</a></h3>
+          <h3 class="breakword"><a ui-sref="app.single({id:upload.id})">Paracosm</a></h3>
           <div>
             <hr style="margin:0px;" />
             <h5><b>Language : </b>Gujarathi</h5>
@@ -53,13 +53,13 @@
     <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in recentupload">
       <div class="card md-whiteframe-z3">
         <div class="card-heading">
-          <a href class="pull-left w-32 m-r">
+          <a ui-sref="app.myprofile({user:upload.uploadername})" class="pull-left w-32 m-r">
                      
           <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
             
           </a>
           <div class="clear">
-              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <a ui-sref="app.myprofile({user:upload.uploadername})" class="font-bold block">{{upload.uploadername}}</a>
               <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
           </div>
         </div>
@@ -70,7 +70,7 @@
         </div>
         <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
         <div class="card-body">
-          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <h4 class="breakword"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name  }}</b></a></h4>
           <div>
             <hr style="margin:0px;" />
             <h5><b>Language : </b>{{upload.language}}</h5>
@@ -93,13 +93,13 @@
     <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in mostviewed">
       <div class="card md-whiteframe-z3">
         <div class="card-heading">
-          <a href class="pull-left w-32 m-r">
+          <a ui-sref="app.myprofile({user:upload.uploadername})" class="pull-left w-32 m-r">
                       
           <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
             
           </a>
           <div class="clear">
-              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <a ui-sref="app.myprofile({user:upload.uploadername})" class="font-bold block">{{upload.uploadername}}</a>
               <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
           </div>
         </div>
@@ -110,7 +110,7 @@
         </div>
         <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
         <div class="card-body">
-          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <h4 class="breakword"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name  }}</b></a></h4>
           <div>
             <hr style="margin:0px;" />
             <h5><b>Language : </b>{{upload.language}}</h5>
@@ -134,13 +134,13 @@
     <div class="col-lg-3 col-md-4 col-sm-4" ng-repeat="upload in youmaylike">
       <div class="card md-whiteframe-z3">
         <div class="card-heading">
-          <a href class="pull-left w-32 m-r">
+          <a ui-sref="app.myprofile({user:upload.uploadername})" class="pull-left w-32 m-r">
                       
           <ng-letter-avatar data={{upload.uploadername}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="button ng-popover-trigger" id="user-popover"></ng-letter-avatar>
             
           </a>
           <div class="clear">
-              <a href class="font-bold block">{{upload.uploadername}}</a>
+              <a ui-sref="app.myprofile({user:upload.uploadername})" class="font-bold block">{{upload.uploadername}}</a>
               <div class="text-xxs font-thin text-muted">Published on - {{upload.createdAt.substr(0,10)}}</div>
           </div>
         </div>
@@ -151,7 +151,7 @@
         </div>
         <a class="md-btn md-raised md-fab m-r md-fab-offset pull-right bg-white">{{(upload.rating)/(upload.usercount)||0 |number:1}}</a>
         <div class="card-body">
-          <h4 style="padding-left: 0px;margin-top: 15px; height:38px;"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name|characters:50}}</b></a></h4>
+          <h4 class="breakword"><a ui-sref="app.single({id:upload.id})"><b>{{upload.name}}</b></a></h4>
           <div>
             <hr style="margin:0px;" />
             <h5><b>Language : </b>{{upload.language}}</h5>

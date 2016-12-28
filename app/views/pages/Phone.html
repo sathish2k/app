@@ -1,3 +1,9 @@
+<style >
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+  }
+</style>
 <div class="center-block w-xxl1 w-auto-xs p-v-md " >
     <div class="navbar">
       <div class="navbar-brand m-t-lg text-center">
@@ -9,18 +15,21 @@
         <h4><b>Phone Number</b></h4>
       </div>
       <hr style="margin: auto;"/>
-      <form name="form">
+      <form name="form" ng-submit="contactdetail(form)">
         <div class="panel-body" style="padding-bottom: 0px;">
           <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
                 <label>Phone Number</label>
-                <input  name="phone" ng-model='mobilenumber' type="phone"  ng-pattern="/^([7-9]{1}[0-9]{9})$/" required="">
-                <div class="errors" ng-messages="user.phone.$error">  
-                  <div ng-message="pattern"></div>                   
+                <input  name="phone" ng-model='mobilenumber' type="number"  required="required">
+                <div class="errors" ng-messages="form.phone.$error">  
+                  <div ng-message="required">
+                    Please Enter Your Mobile Number
+                  </div>   
+
                 </div>
               </md-input-container>
         </div>
         <footer class="p text-right">
-          <button ng-click="contactdetail()"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">Save</button>
+          <button type="submit"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">Save</button>
           <button ng-click="personaldetail()"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">cancel</button>
         </footer>
       </form>

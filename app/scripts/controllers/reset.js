@@ -5,7 +5,7 @@ angular.module('app')
     $scope.resetpass=function(){
   var obj={};
   obj.email=$scope.email;
-$http.post(' https://sailsserver.herokuapp.com/auth/resetpass', obj).success(function(resp){
+$http.post('https://sailsserver.herokuapp.com/auth/resetpass', obj).success(function(resp){
           console.log(resp);
           $rootScope.reseterror=resp.message;
           $scope.success();

@@ -18,8 +18,10 @@ angular.module('app')
     ]
   )
   .config(
-    [          '$stateProvider','$urlRouterProvider', 'MODULE_CONFIG',
-      function ( $stateProvider,   $urlRouterProvider,  MODULE_CONFIG ) {
+    [          '$stateProvider','$urlRouterProvider','$mdThemingProvider', 'MODULE_CONFIG',
+      function ( $stateProvider,   $urlRouterProvider,$mdThemingProvider,  MODULE_CONFIG ) {
+        $mdThemingProvider.theme("success-toast");
+$mdThemingProvider.theme("error-toast");
         $urlRouterProvider
           .otherwise('/app/home');
           
@@ -124,21 +126,21 @@ angular.module('app')
     .state('access.personaldetail', {
       url: '/personaldetail',
       controller:'LoginCtrl',
-      data:{isloggedin:'true'},
+      data:{isloggedin:'true',afterlogin:'true'},
       templateUrl: 'views/pages/Personal.html'
       
     })
     .state('access.socialdetail', {
       url: '/socialdetail',
       controller:'LoginCtrl',
-      data:{isloggedin:'true'},
+      data:{isloggedin:'true',afterlogin:'true'},
       templateUrl: 'views/pages/contact.html'
       
     })
      .state('access.contactdetail', {
       url: '/contactdetail',
       controller:'LoginCtrl',
-      data:{isloggedin:'true'},
+      data:{isloggedin:'true',afterlogin:'true'},
       templateUrl: 'views/pages/Phone.html'
       
     })

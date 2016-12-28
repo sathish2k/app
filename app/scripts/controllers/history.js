@@ -47,7 +47,7 @@ angular.module('app')
   });
  $scope.delete=function(){
     var obj={username:$rootScope.user};
-    $http.post('https://sailsserver.herokuapp.com/history/delete',obj).success(function(resp){
+    $http.post(' /history/delete',obj).success(function(resp){
           console.log(resp);
           $scope.reload();
         }).error( function(err) {
@@ -87,6 +87,35 @@ $scope.alert = '';
     });
   };
   
+
+  $scope.deletesingle=function(id){
+  $http({
+    url: 'https://sailsserver.herokuapp.com/history', 
+    method: "DELETE",
+    params: {id: id}
+   }).then(function(res)
+  {
+    console.log(res);
+    $scope.get();
+  
+  });
+
+};
+ $scope.get=function(){
+$http({
+     url: "https://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
+     method: "GET",
+     params: {username:$rootScope.user}  
+}).then(function(resp){
+
+    console.log(resp);
+
+    $scope.uploads=resp.data;
+    console.log($scope.uploads);
+
+
+  });
+}
   });
 
 

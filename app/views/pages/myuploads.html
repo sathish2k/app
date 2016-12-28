@@ -1,9 +1,9 @@
 <div style="width: 300px;float: right;">
 <form>
   <div class="input-group stylish-input-group">
-   <input type="text" ng-model=searchvideo class="form-control" placeholder="Search Videos">
+   <input type="text" ng-model=searchvideo class="form-control" ng-change="search()" placeholder="Search Videos">
     <span class="input-group-addon">
-    <button type="submit" ui-sref="app.uservideosearch({contains:(searchvideo),uploaderid:videos[0].uploaderid})">
+    <button type="submit">
       <span class="glyphicon glyphicon-search"></span>
     </button>  
     </span>
@@ -59,6 +59,9 @@
         </div>    
       </div>
     </div>  
-          </div>           
+          </div>  
+           <div class="col-lg-12" align="center" >
+    <button ng-click="more()" md-ink-ripple  class="md-btn md-raised m-b btn-fw indigo">See More</button>  
+  </div>           
         </div>    
      

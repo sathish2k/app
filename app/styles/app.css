@@ -2,6 +2,48 @@
 
 */
 
+
+
+.emailvalid{
+   font-size: 12px;
+}
+.uservalid{
+   font-size: 12px;
+}
+md-toast.md-top {
+  top:59px;
+}
+md-toast.md-error-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: #f44336 !important;
+}
+
+md-toast.md-success-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: #4caf50 !important;
+}
+
+.breakword{
+  -webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+display: -webkit-box;
+
+font-variant-caps: normal;
+
+line-height: 16px;
+
+
+max-height: 32px;
+overflow-x: hidden;
+overflow-y: hidden;
+
+position: relative;
+
+text-overflow: ellipsis;
+white-space: normal;
+word-wrap: break-word;
+padding-left: 0px;margin-top: 15px;height:38px;
+}
 [ui-view].ng-leave {
   display: none;
 }

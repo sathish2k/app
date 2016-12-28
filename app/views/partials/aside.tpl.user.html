@@ -2,59 +2,29 @@
     
     <div class="p p-h-md">
       <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">&times;</a>
-      <strong>Chat</strong> <span class="badge bg-warning badge-xs">5</span>
+      <strong>Notifications</strong> <span class="badge bg-warning badge-xs">5</span>
     </div>
-    <div style="padding-left: 10px;padding-right: 10px;">
-      <form>
-        <div class="input-group stylish-input-group" style="width: 100%;">
-          <input type="text" class="form-control"  placeholder="Search" >
-          <span class="input-group-addon">
-          <button type="submit">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>  
-          </span>
-        </div>
-      </form>
-    </div>
+   
     <div class="box-row">
+
       <div class="box-cell">
+ <div infinite-scroll='getMore()' infinite-scroll-distance='-1'  infinite-scroll-parent='true'>
         <div class="box-inner">
+
           <div class="list-group no-radius no-borders">
-            <a data-toggle="modal" data-target="#chat" ng-click="getoldmsg(user.username)" data-dismiss="modal"  class="list-group-item p-h-md" ng-repeat="user in users">
-             <ng-letter-avatar data={{user.username}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="pull-left w-40 m-r img-circle"></ng-letter-avatar>
-              <!-- <img src="images/a1.jpg" class="pull-left w-40 m-r img-circle"> -->
-              <div class="clear">
-                <span class="font-bold block" style="padding-top: 10px;">{{user.username}}</span>
-              </div>
-            </a>
-           
+
             <hr/>
-
-
-            <div class="p p-h-md">
-                <strong>Notifications</strong> <span class="badge bg-warning badge-xs">5</span>
-            </div>
-            <a data-toggle="modal" data-dismiss="modal"  class="list-group-item p-h-md" ng-repeat="notification in notify|orderBy:'-createdAt'">
+           <!-- <div class="constrained"> -->
+           
+            <a  data-toggle="modal" ui-sref="app.myprofile({user:notification.username})"  data-dismiss="modal"  class="list-group-item p-h-md" ng-repeat="notification in notify|orderBy:'-createdAt'">
               <img src="images/a2.jpg" class="pull-left w-40 m-r img-circle">
               <div class="clear">
-                <span class="font-bold block">{{notification.username}}</span>
+                <span  class="font-bold block">{{notification.username}}</span>
                 <span class="clear text-ellipsis text-xs">"{{notification.message}}</span>
               </div>
             </a>
-           <!--  <a data-toggle="modal" data-dismiss="modal"  class="list-group-item p-h-md">
-              <img src="images/a2.jpg" class="pull-left w-40 m-r img-circle">
-              <div class="clear">
-                <span class="font-bold block">Mason Yarnell</span>
-                <span class="clear text-ellipsis text-xs">"Lorem ipsum dolor sit amet onsectetur adipiscing elit"</span>
-              </div>
-            </a>
-            <a data-toggle="modal" data-dismiss="modal"  class="list-group-item p-h-md">
-              <img src="images/a2.jpg" class="pull-left w-40 m-r img-circle">
-              <div class="clear">
-                <span class="font-bold block">Mason Yarnell</span>
-                <span class="clear text-ellipsis text-xs">"Lorem ipsum dolor sit amet onsectetur adipiscing elit"</span>
-              </div>
-            </a> -->
+         <!--    </div> -->
+            </div>
           </div>
         </div>
       </div>

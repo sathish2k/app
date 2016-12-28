@@ -1,0 +1,40 @@
+  <div class="box" ng-controller="MsgCtrl">
+    
+    <div class="p p-h-md">
+      <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">&times;</a>
+      <strong>Chat</strong> <span class="badge bg-warning badge-xs">5</span>
+    </div>
+    <div style="padding-left: 10px;padding-right: 10px;">
+      <form>
+        <div class="input-group stylish-input-group" style="width: 100%;">
+          <input type="text" class="form-control"  placeholder="Search" >
+          <span class="input-group-addon">
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>  
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="box-row">
+      <div class="box-cell">
+        <div class="box-inner">
+          <div class="list-group no-radius no-borders">
+            <a data-toggle="modal" data-target="#chat" ng-click="getoldmsg(user.username)" data-dismiss="modal"  class="list-group-item p-h-md" ng-repeat="user in users">
+             <ng-letter-avatar data={{user.username}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="pull-left w-40 m-r img-circle"></ng-letter-avatar>
+              <div class="clear">
+                <span class="font-bold block" style="padding-top: 10px;">{{user.username}}</span>
+              </div>
+            </a>
+            <hr/>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-h-md p-v">
+      <p>Invite People</p>
+      <a href class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+      <a href class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+    </div>
+  </div>

@@ -2,7 +2,7 @@
 
 var app=angular.module('app');
 
-  app.controller('SingleCtrl', function($scope,$stateParams,$http,$location,$localStorage,$rootScope) {
+  app.controller('SingleCtrl', function($scope,$stateParams,$http,$location,$localStorage,$rootScope,messageservice) {
     if($localStorage.token){
   var fobj={};
   console.log('follow')
@@ -17,7 +17,8 @@ var app=angular.module('app');
     });
 }
     $scope.url = $location.absUrl();
-  
+  messageservice.reset();
+
  $http({
      url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
@@ -40,8 +41,10 @@ var app=angular.module('app');
   $rootScope.uploaderid=res.data.uploaderid;
   $rootScope.link=res.data.link;
   console.log($rootScope.link);
- 
 
+ messageservice.appendMetaKeywords($rootScope.metatag)
+ 
+console.log($rootScope.metatag)
   var video=videojs('video', {
 
       controls: true,
@@ -65,8 +68,10 @@ var app=angular.module('app');
      
     });
 
-      $(".vjs-big-play-button").on("click", function(){
+      $(".vjs-big-play-button").on("click touchstart", function(){
+        console.log('click')
       $(this).hide();
+       
       });
       $(".vjs-poster").on("click", function(){
       $(".vjs-big-play-button").hide();
@@ -80,6 +85,7 @@ var app=angular.module('app');
   video.on('play', function() {
        
       $(".vjs-big-play-button").hide();
+       $(".vjs-poster").hide();
 })
 
    video.on('ended', function() {
@@ -327,7 +333,7 @@ else
 };
  $scope.history=function(){
 if($rootScope.user){
-  var obj={username:$rootScope.user,history:$rootScope.history,historyid:$rootScope.link};
+  var obj={username:$rootScope.user,history:$rootScope.history,historyid:$rootScope.userid};
   
 
   $http.post('https://sailsserver.herokuapp.com/history/historycreate',obj).success(function(resp){

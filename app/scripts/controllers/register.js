@@ -1,21 +1,64 @@
 'use strict';
 
-angular.module('app')
-  .controller('RegisterCtrl', function ($scope,$state,$mdDialog,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast) {
+var app=angular.module('app');
+  app.controller('RegisterCtrl', function ($scope,$state,$mdDialog,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast) {
    
-  	var signupObj = {};
-	$scope.register = function(){
-		
 
-		signupObj.username = $scope.credentials.username;
+
+$scope.clear=function(){
+  $scope.message="";
+}
+   $scope.checkemail=function(){
+    console.log('ss')
+if($scope.email=="" || !$scope.email) {
+  return;
+}
+else{
+  var checkobj={};
+  console.log($scope.email)
+  checkobj.email=$scope.email;
+  $http.post('https://sailsserver.herokuapp.com/auth/signupcheck',checkobj ).success(function(resp){
+          console.log(resp);
+console.log('check');
+$scope.message=resp.message;
+});
+   }
+}
+
+
+$scope.clearuser=function(){
+  $scope.usermessage="";
+}
+   $scope.checkuser=function(){
+    console.log('ss')
+if($scope.username=="" || !$scope.username) {
+  return;
+}
+else{
+  var checkuserobj={};
+  console.log($scope.username)
+  checkuserobj.username=$scope.username;
+  $http.post('https://sailsserver.herokuapp.com/auth/usercheck',checkuserobj ).success(function(resp){
+          console.log(resp);
+console.log('check');
+$scope.usermessage=resp.message;
+});
+   }
+}
+
+  	var signupObj = {};
+	$scope.register = function(form){
+		if(form.$valid) {
+
+		signupObj.username = $scope.username;
 		signupObj.password = $scope.credentials.password;
-		signupObj.email =$scope.credentials.email;
+		signupObj.email =$scope.email;
 		signupObj.mobile = $scope.credentials.phone;
 
 		console.log(signupObj);
 
 
-		$http.post(' https://sailsserver.herokuapp.com/auth/signup', signupObj).success(function(resp){
+		$http.post('https://sailsserver.herokuapp.com/auth/signup', signupObj).success(function(resp){
 	        console.log(resp);
 	        $scope.signupsuccess();
           $state.go("access.verification", {
@@ -37,6 +80,7 @@ angular.module('app')
       delete $localStorage.form1;
       delete $localStorage.form2;
       delete $localStorage.form3;
+    }
 	};
   $scope.signupsuccess = function() {
     $mdToast.show(
@@ -71,3 +115,25 @@ angular.module('app')
   };
   
   });
+var compareTo = function() {
+    return {
+      require: "ngModel",
+      scope: {
+        otherModelValue: "=compareTo"
+      },
+      link: function(scope, element, attributes, ngModel) {
+
+        ngModel.$validators.compareTo = function(modelValue) {
+          
+          return modelValue == scope.otherModelValue;
+        };
+
+        scope.$watch("otherModelValue", function() {
+
+          ngModel.$validate();
+        });
+      }
+    };
+  };
+
+  app.directive("compareTo", compareTo);

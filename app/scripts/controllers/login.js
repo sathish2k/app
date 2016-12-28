@@ -9,7 +9,7 @@ angular.module('app')
      var obj={};
      obj.token=$stateParams.token;
      obj.id=$stateParams.id;
-     $http.post(' https://sailsserver.herokuapp.com/auth/activate', obj).success(function(resp){
+     $http.post('https://sailsserver.herokuapp.com/auth/activate', obj).success(function(resp){
      console.log(resp);
      $rootScope.activateerror=resp.message;
      $scope.activateres();
@@ -58,7 +58,7 @@ angular.module('app')
    signinObj.email = $scope.credential.email;
 	 signinObj.password =$scope.credential.password;
               
-   $http.post(' https://sailsserver.herokuapp.com/auth/signin', signinObj).success(function(resp){
+   $http.post('https://sailsserver.herokuapp.com/auth/signin', signinObj).success(function(resp){
 	 console.log(resp);
    $localStorage.token =resp.token;
    $localStorage.form1=resp.user.form1;
@@ -157,12 +157,12 @@ angular.module('app')
     personalobj.city=$scope.city;
     personalobj.pincode=$scope.pincode;
 
-    $http.post(' https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
 
     console.log(resp);
 
     $scope.personalupdate();
-    delete $localStorage.form1;
+     $localStorage.form1=true;
      $state.go("access.socialdetail")
 
     });
@@ -191,12 +191,12 @@ angular.module('app')
     socialobj.youtubeurl=$scope.youtubeurl;
     socialobj.linkedinurl=$scope.linkedinurl;
 
-      $http.post(' https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
 
         console.log(resp);
 
        $scope.userupdate();
-       delete $localStorage.form2;
+       $localStorage.form2=true;
        $state.go("access.contactdetail")
         
       });
@@ -214,24 +214,25 @@ angular.module('app')
     });
     }
 
-    $scope.contactdetail=function(){
+    $scope.contactdetail=function(form){
+      if(form.$valid){
     var contactobj={};
     contactobj.userid=$rootScope.id;
     contactobj.owner=$rootScope.id;
     contactobj.mobilenumber=$scope.mobilenumber;
     contactobj.otp=$scope.otp;
 
-      $http.post(' https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
 
         console.log(resp);
       
        $scope.contactupdate();
-       delete $localStorage.form3;
+       $localStorage.form3=true;
         $location.path('/home');
         
       });
     }
-
+}
     $scope.contactupdate=function(){
     $http({
      url: "https://sailsserver.herokuapp.com/user/"+$rootScope.id, 
@@ -299,6 +300,16 @@ angular.module('app')
         var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, toState)
         {
 
+              console.log($localStorage.form1)
+              console.log($localStorage.form2)
+              console.log($localStorage.form3)
+              if((toState.data.afterlogin=='true')&&($localStorage.form1&&$localStorage.form2&&$localStorage.form3==true)){
+                console.log('gg')
+              event.preventDefault();
+
+             $state.go('access.forgot-password');
+            
+          }
             console.log("START STATE CHANGE");
             if(toState.data.isloggedin == 'true' && $localStorage.token){
             console.log("LOGIN STATE");
@@ -310,6 +321,7 @@ angular.module('app')
              $state.go('access.signin');
             }
              $rootScope.id=$localStorage.id;
+              
              if(toState.data.alreadylogin=='true' && $localStorage.token){
               event.preventDefault();
              $state.go('access.forgot-password');
@@ -338,7 +350,10 @@ angular.module('app')
           
             }
 
+          
+
           document.body.scrollTop = document.documentElement.scrollTop = 0;
+          $("html,body").animate({scrollTop:0},1000);
           $rootScope.user=$localStorage.user;
           console.log($rootScope.user)
            window.onload=function(){

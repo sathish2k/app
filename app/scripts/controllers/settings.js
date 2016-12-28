@@ -56,7 +56,7 @@ console.log(res)
     personalobj.city=$scope.city;
     personalobj.pincode=$scope.pincode;
 
-    $http.post(' https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
+    $http.post('https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
 
     console.log(resp);
    $scope.contactdetail();
@@ -73,7 +73,7 @@ console.log(res)
     console.log($scope.mobilenumber)
     contactobj.otp=$scope.otp;
 
-      $http.post(' https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
 
         console.log(resp);
         
@@ -106,7 +106,7 @@ console.log(res)
     socialobj.youtubeurl=$scope.youtubeurl;
     socialobj.linkedinurl=$scope.linkedinurl;
 
-      $http.post(' https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
+      $http.post('https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
 
         console.log(resp);
 
@@ -185,7 +185,7 @@ $scope.uploadFile = function(files){
      console.log($scope.oldpassword)
       console.log($scope.newpassword)
      
-     $http.post(' https://sailsserver.herokuapp.com/auth/updatepass', obj).success(function(resp){
+     $http.post('https://sailsserver.herokuapp.com/auth/updatepass', obj).success(function(resp){
      console.log(resp);
      $scope.oldpassword='';
      $scope.newpassword='';

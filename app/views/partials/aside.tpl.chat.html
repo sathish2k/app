@@ -1,4 +1,4 @@
-  <div class="box" ng-controller="MsgCtrl">
+  <div class="box" ng-controller="GetmsgCtrl ">
     <div class="p p-h-md">
       <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">&times;</a>
       <strong>Chat</strong>
@@ -8,7 +8,7 @@
         <div class="box-inner">
           <div class="p-md">
           <div ng-repeat="message in messages">
-         
+         <h1>{{message.user}}</h1>
             <div class="m-b" ng-if="$root.user===message.user" > 
               <a href class="pull-left w-40 m-r-sm"><ng-letter-avatar data={{message.user}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="w-full img-circle"></ng-letter-avatar></a>
               <div class="clear">

@@ -48,7 +48,7 @@
   <script src="../libs/autocomplete.js"></script>
   <script src="../libs/sails.io.js/dist/sails.io.js"  ></script>
   <script type="text/javascript">
-  io.sails.url = 'http://localhost:1337';
+ var socket = io.sails.connect();
 </script>
 <!-- infinite scroll -->
 <script src="../libs/ng-infinite-scroll.js"></script>
@@ -71,7 +71,7 @@
   <script src="../libs/angular/angular-loading-bar/build/loading-bar.js"></script>
   <!-- youtube player -->
   <script src="../libs/video.js/dist/video.js"></script>
-  <script src="../libs/videojs-youtube/Youtube.js"></script>
+  <script src="../libs/videojs-youtube/dist/Youtube.js"></script>
   <script src="../libs/lib/videojs-resolution-switcher.js"></script>
   <!-- Share -->
   <script src="../libs/angular-socialshare/dist/angular-socialshare.js"></script>

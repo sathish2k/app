@@ -5,69 +5,100 @@
           <div class="panel-heading bg-white">
             <h4><b>Profile</b></h4>
           </div>
-          <form>
+          
+<form name="validate">
             <div class="panel-body">
+
               <div class="row">
+
                 <div class="col-sm-6 m-b">
-                  <div class="md-form-group float-label">
-                    <input type="text" class="md-input" ng-model="firstname" required>
-                    <label>First Name</label>
-                  </div>   
-                </div>
-                <div class="col-sm-6 m-b">
-                  <div class="md-form-group float-label">
-                    <input type="text" class="md-input" ng-model="lastname" required>
-                    <label>Last Name</label>
+               
+                  <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                  <label>First Name</label>
+                 <input name="firstname" class="md-input" ng-model="firstname" required="required"> 
+                  <div  ng-messages="validate.firstname.$error">
+                 <div ng-message="required">Please Enter Your First Name</div>
                   </div>
+                </md-input-container>  
+                </div>
+                <div class="col-sm-6 m-b">
+                  <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Last Name</label>
+                 <input name="lastname" class="md-input" ng-model="lastname" required="required"> 
+                  <div  ng-messages="validate.lastname.$error">
+               <div ng-message="required">Please Enter Your Last Name</div>
+             </div>
+                </md-input-container>
                 </div>
               </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="username" ng-pattern="/^[a-zA-Z0-9]{4,10}$/" required>
-                  <label>Username</label>
-              </div>
+             <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Username</label>
+                 <input name="username" class="md-input" ng-model="username" required="required"> 
+                  <div  ng-messages="validate.username.$error">
+               <div ng-message="required">Please Enter Your Username</div>
+               </div>
+                </md-input-container>
               
-              <div class="md-form-group float-label">
-                <input type="email" class="md-input" ng-model="email" required >
-                <label>Email</label>
-              </div>
+             <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Email</label>
+                 <input name="email" class="md-input" ng-model="email" required="required"> 
+                  <div class="errors" ng-messages="validate.email.$error">
+                 <div ng-message="required">Please Enter Your Email Address</div>
+             </div>
+                </md-input-container>
               <div class="row">
                 <div class="col-sm-6 m-b">
-                  <div class="md-form-group float-label">
-                    <input type="text" class="md-input" ng-model="mobilenumber" required >
-                    <label>Phone</label>
-                  </div>   
+                  <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Phone</label>
+                 <input name="phone" class="md-input" ng-model="mobilenumber" required="required"> 
+                  <div class="errors" ng-messages="validate.phone.$error">
+               <div ng-message="required">Please Enter Your Mobile Number</div>
+               </div>
+                </md-input-container>   
                 </div>
                 <div class="col-sm-6 m-b">
-                  <md-input-container flex>
-                    <label style="font-size: large;">Gender</label>
-                  <select class="md-input" ng-model="gender" required >
-                    <option value="">Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                  </md-input-container>
+                      <md-input-container flex>
+                <md-select name="gender" ng-model="gender" required="required" >
+                    <label value="gender" style="padding-left: 13px">Gender</label>
+                    <md-option value="male">Male</md-option>
+                    <md-option value="female">Female</md-option>
+                    <md-option value="others">Others</md-option>
+                </md-select>
+                <div class="errors" ng-messages="validate.gender.$error">
+          <div ng-message="required">Please Select Your Gender</div>
+        </div>
+                </md-input-container>
                 </div>
               </div>
                             
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="website">
-                  <label>Website</label>
-              </div>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Website</label>
+                 <input name="firstname" class="md-input" ng-model="website" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+             <div ng-message="required">Please Enter Your First Name</div>
+             </div>
+                </md-input-container>
               
-              <div class="md-form-group float-label">
-                <input type="text" class="md-input" ng-model="status">
-                <label>Status</label>
-              </div>   
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Status</label>
+                 <input name="firstname" class="md-input" ng-model="status"> 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>  
                             
-              <div class="md-form-group float-label">
-                <input type="text" class="md-input" ng-model="about">
-                <label>About</label>
-              </div>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>About</label>
+                 <input name="firstname" class="md-input" ng-model="about" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
 
             <footer class="p text-right">
               <button type="submit" class="md-btn md-raised p-h-md" ng-click="personaldetail()" ng-disabled="form.$invalid">Submit</button>
             </footer>
-          </form>
+       </form>
         </div>  
       </div>
     </div>
@@ -79,30 +110,48 @@
           </div>
           <form>
             <div class="panel-body">
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="fburl">
-                  <label>Facebock Profile link</label>
-              </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="twitterurl">
-                  <label>Twitter Profile link</label>
-              </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="googleurl">
-                  <label>google plus Profile link</label>
-              </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="instagramurl">
-                  <label>Instagram Profile link</label>
-              </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="youtubeurl">
-                  <label>YouTube Profile link</label>
-              </div>
-              <div class="md-form-group float-label">
-                  <input type="text" class="md-input" ng-model="linkedinurl">
-                  <label>LinkedIn Profile link</label>
-              </div>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Facebook Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="fburl" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Twitter Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="twitterurl" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Google Plus Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="googleurl"> 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+              <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Instagram Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="instagramurl" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+               <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>Youtube Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="youtubeurl"> 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+          <div ng-message="required">Please Enter Your First Name</div>
+        </div>
+                </md-input-container>
+               <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+               <label>LinkedIn Profile Link</label>
+                 <input name="firstname" class="md-input" ng-model="linkedinurl" > 
+                  <div class="errors" ng-messages="validate.firstname.$error">
+           <div ng-message="required">Please Enter Your First Name</div>
+           </div>
+                </md-input-container>
 
             </div>
             <footer class="p text-right">

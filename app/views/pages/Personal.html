@@ -1,3 +1,9 @@
+<style >
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+  }
+</style>
 <div class="center-block w-xxl1 w-auto-xs p-v-md " >
     <div class="navbar">
       <div class="navbar-brand m-t-lg text-center">
@@ -135,7 +141,7 @@
              
               <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;">
               <label>Pincode</label>
-                <input type="text" name="pincode" class="md-input" ng-model="pincode" required>
+                <input type="number" name="pincode" class="md-input" ng-model="pincode" required="required">
                  <div class="errors" ng-messages="form.pincode.$error">
           <div ng-message="required">Please Enter Your Pincode</div>
         </div>

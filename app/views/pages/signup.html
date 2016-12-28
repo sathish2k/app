@@ -9,31 +9,46 @@
       <div class="m-b text-sm" align="center">
         <h4><b style="font-family: 'Lato', sans-serif;">Sign up to your {{app.name}} Account</b></h4>
       </div>
-      <form name="form" ng-submit="register()">
+      <form name="validate" ng-submit="register(validate)">
        
-        <div class="md-form-group float-label">
-          <input type="email" name="email"  class="md-input" ng-model="credentials.email" required>
-          <label>Email</label>
-        </div>
-         <div class="md-form-group float-label">
-          <input type="text" name="name" class="md-input" ng-minlength="5"
-                ng-maxlength="20" ng-model="credentials.username" required>
-                <div  ng-messages="form.name.$error">
-        <p  ng-message="minlength">Your name is too short.</p>
-        <p ng-message="maxlength">Your name is too long.</p>
-        <div  ng-message="required">Your name is required.</div>
-    </div>
-
-          <label>User Name</label>
-        </div>
-        <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="credentials.password" required>
-          <label>Password</label>
-        </div>
-        <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="credentials.confirmpassword" required>
-          <label>Retype Password</label>
-        </div>
+         <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                  <label>Email</label>
+                 <input name="email" ng-blur="checkemail()" ng-focus="clear()" type="email" class="md-input" ng-model="email" required="required"> 
+                  <div  ng-messages="validate.email.$error">
+                  <span ng-if="(message)" class="emailvalid"  >Email id is already taken</span>
+                  <span ng-message="email">invalid email</span>
+                 <div ng-message="required">Please Enter Your Email Address</div>
+                  </div>
+        </md-input-container> 
+        <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                  <label>Username</label>
+                 <input name="username" ng-blur="checkuser()" ng-focus="clearuser()" ng-maxlength="20" type="text" class="md-input" ng-model="username" required="required"> 
+                  <div  ng-messages="validate.username.$error">
+                  <span class="emailvalid" ng-if="(usermessage)" >Username is already taken</span>
+                
+                 <div ng-message="maxlength">Username should not be maximum 20 characters </div>
+                  <div ng-message="required">Please Enter Your Username</div>
+                  </div>
+        </md-input-container> 
+        <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                  <label>Password</label>
+                 <input name="password"  ng-maxlength="20" ng-minlength="5" type="password" class="md-input" ng-model="credentials.password" required="required"> 
+                  <div  ng-messages="validate.password.$error">
+                 <div ng-message="maxlength">Password should not be maximum 20 characters </div>
+                 <div ng-message="minlength">Password should be minimum 5  characters </div>
+                  <div ng-message="required">Please Enter Your Password</div>
+                  </div>
+        </md-input-container> 
+        <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
+                  <label>Confirm Password</label>
+                 <input name="confirmpassword" compare-to="credentials.password"  type="password"  class="md-input" ng-model="credentials.confirmpassword" > 
+                  <div  ng-messages="validate.confirmpassword.$error">
+                  <div ng-message="compareTo">Password don't match.Try again?</div>
+                  
+                  
+                  </div>
+        </md-input-container> 
+        
         <div class="m-b-md">
           <label class="md-check">
             <input type="checkbox" ng-model="agree" required><i class="indigo"></i><a href class="md-primary" ng-click="showAlert($event)"><i><u><b>I Agree with the Terms and Coditions</b></u></i></a>
@@ -44,6 +59,6 @@
     </div>
 
     <div class="p-v-lg text-center">
-      <div>Already have an account? <button ui-sref="access.signin" class="md-btn">Sign in</button></div>
+      <div>Already have an account? <button ui-sref="access.signin" class="md-btn">Login</button></div>
     </div>
   </div>
