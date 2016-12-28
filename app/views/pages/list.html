@@ -15,21 +15,22 @@
   <div class="col-lg-7 col-md-9 col-sm-9" dir-paginate="upload in uploads| itemsPerPage: usersPerPage" current-page="pagination.current" total-items="count">
     <div class="card md-whiteframe-z2">
       <!-- <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">×</a> -->  
-      <div class="card-body">
+      <div class="card-body" style="padding: 5px; margin-right: 0px;margin-left: 0px; ">
         <div class="row">
-          <div class="col-sm-6" style="padding: 5px;">
+          <div class="col-sm-6" style="padding: 5px; margin-right: 0px;margin-left: 0px; ">
             <div class="p" style="padding: 0px;">
               <a ui-sref="app.single({id:upload.id})">
                 <img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="Washed Out">
               </a>
             </div>
           </div>
-          <div class="col-sm-6" style="padding: 5px;">
+          <div class="col-sm-6" style="padding: 5px; margin-right: 10px;margin-left: 10px; ">
             <div class="p" style="padding: 0px;">
             <a ui-sref="app.single({id:upload.id})">
-              <h5><b>{{upload.name}}</b></h5>
+              <h5 class="breakword"><b>{{upload.name}}</b></h5>
               </a>
-              <h6>{{upload.discription}}</h6>
+              <h6 class="breakword">{{upload.discription}}</h6>
+              <span>Uploaded by <a ui-sref="app.myprofile({user:upload.uploadername})">{{upload.uploadername}}</a></span>
             </div>
           </div>
         </div>
