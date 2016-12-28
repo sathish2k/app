@@ -1,4 +1,15 @@
-
+<div style="width: 300px;float: right;">
+<form>
+  <div class="input-group stylish-input-group">
+   <input type="text" class="form-control" ng-change="search()" placeholder="Search Videos">
+    <span class="input-group-addon">
+    <button type="submit">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>  
+    </span>
+  </div>
+</form>
+</div>
 <div class="row">
 <div ng-if=$root.results >
 <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">Search Results</h3>

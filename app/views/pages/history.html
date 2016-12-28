@@ -1,3 +1,15 @@
+<div style="width: 300px;float: right;">
+<form>
+  <div class="input-group stylish-input-group">
+   <input type="text" class="form-control" ng-change="search()" placeholder="Search Videos">
+    <span class="input-group-addon">
+    <button type="submit">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>  
+    </span>
+  </div>
+</form>
+</div>
 <div class="row">
   <div class="col-lg-8 col-md-9 col-sm-9" style="margin-bottom: 25px;">
     <button md-ink-ripple type="submit" class="md-btn md-raised btn-block p-h-md {{app.setting.theme.primary}}" ng-click="showConfirm($event)" >Clear History</button>  
