@@ -18,10 +18,11 @@ angular.module('app')
     ]
   )
   .config(
-    [          '$stateProvider','$urlRouterProvider','$mdThemingProvider', 'MODULE_CONFIG',
-      function ( $stateProvider,   $urlRouterProvider,$mdThemingProvider,  MODULE_CONFIG ) {
+    [          '$stateProvider','$urlRouterProvider', '$locationProvider','$mdThemingProvider', 'MODULE_CONFIG',
+      function ( $stateProvider,   $urlRouterProvider, $locationProvider,$mdThemingProvider,  MODULE_CONFIG ) {
         $mdThemingProvider.theme("success-toast");
 $mdThemingProvider.theme("error-toast");
+$locationProvider.html5Mode(true);
         $urlRouterProvider
           .otherwise('/app/home');
           
@@ -46,7 +47,7 @@ $mdThemingProvider.theme("error-toast");
     .state('app.index', {
       url: '/home',
       templateUrl: 'views/pages/main.html',
-      data : { title: 'Home', grantAccessTo: 'authenticated',folded: true,theme: { primary: 'green'}},
+      data : { title: 'Home', grantAccessTo: 'authenticated',folded: true,theme: { primary: 'purple'}},
       controller: 'MainCtrl',
       resolve: load('scripts/controllers/main.js')
     })

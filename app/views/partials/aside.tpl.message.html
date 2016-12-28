@@ -32,6 +32,60 @@
         </div>
       </div>
     </div>
+    <div class="modal fade"  data-backdrop="false">
+  <div class="right w-xxl bg-white md-whiteframe-z2" >
+    <div class="box" >
+    <div class="p p-h-md">
+      <a data-dismiss="modal" class="pull-right text-muted-lt text-2x m-t-n inline p-sm">&times;</a>
+      <strong>Chat</strong>
+    </div>
+    <div class="box-row bg-light lt">
+      <div class="box-cell">
+        <div class="box-inner">
+          <div class="p-md">
+          <div >
+         <h1>{{message.user}}</h1>
+            <div class="m-b" ng-if="$root.user===message.user" > 
+              <a href class="pull-left w-40 m-r-sm"><ng-letter-avatar data={{message.user}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="w-full img-circle"></ng-letter-avatar></a>
+              <div class="clear">
+                <div class="p p-v-sm bg-warning inline r">
+                  {{message.text}}
+                </div>
+                <div class="text-muted-lt text-xs m-t-xs"><i class="fa fa-ok text-success"></i> 2 minutes ago</div>
+            
+            </div>
+            </div>
+           
+            <div class="m-b" ng-if="$root.touser===message.user">
+              <a href class="pull-right w-40 m-l-sm"><ng-letter-avatar data={{message.user}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="w-full img-circle"></ng-letter-avatar></a>
+              <div class="clear text-right">
+                <div class="p p-v-sm bg-info inline text-left r">
+                 {{message.text}}
+                </div>
+                <div class="text-muted-lt text-xs m-t-xs">1 minutes ago</div>
+              
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-h-md p-v">
+      <a class="pull-left w-32 m-r"><ng-letter-avatar data={{$root.user}} shape="round" dynamic=true avatarcustombgcolor=#20d6ef  class="w-full img-circle"></ng-letter-avatar></a>
+      <form ng-submit="sendmsg()">
+        <div class="input-group">
+          <input type="text" ng-model="textmsg" class="form-control" placeholder="Say something">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">SEND</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </div>
+</div>
     <div class="p-h-md p-v">
       <p>Invite People</p>
       <a href class="text-muted"><i class="fa fa-fw fa-twitter"></i> Twitter</a>

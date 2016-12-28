@@ -9,7 +9,7 @@ var app=angular.module('app');
     fobj.vidsid=$stateParams.id;
     fobj.id=$rootScope.id;
     console.log(fobj)
-    $http.post('https://sailsserver.herokuapp.com/user/checkuser',fobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/user/checkuser',fobj).success(function(resp){
       console.log(resp);
       $rootScope.isfollow=resp.user;
     }).error(function(err){
@@ -20,7 +20,7 @@ var app=angular.module('app');
   messageservice.reset();
 
  $http({
-     url: "https://sailsserver.herokuapp.com/uploads", 
+     url: "http://sailsserver.herokuapp.com/uploads", 
      method: "GET",
      params: {id:$stateParams.id}  
 }).then(function(res){
@@ -114,7 +114,7 @@ console.log($rootScope.link);
     subobj.id=$rootScope.uploaderid;
     subobj.owner=$rootScope.id;
     if($localStorage.token){
-    $http.post('https://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
       console.log(resp);
        $rootScope.isfollow=resp.user;
        $localStorage.follow=resp.userdata.following;
@@ -133,7 +133,7 @@ console.log($rootScope.link);
    var unsubobj={};
     unsubobj.vidsid=$rootScope.uploaderid;
     unsubobj.id=$rootScope.id;
-    $http.post('https://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
       console.log(resp);
        $rootScope.isfollow=resp.user;
        $localStorage.follow=resp.userdata.following;
@@ -162,7 +162,7 @@ $scope.savedata=function(){
   notifyobj.ownerid=$rootScope.uservideo;
   notifyobj.message=$rootScope.user+" "+'following';
   notifyobj.username=$rootScope.user;
-   $http.post("https://sailsserver.herokuapp.com/notification",notifyobj).success(function(res){
+   $http.post(" /notification",notifyobj).success(function(res){
     console.log(res);
   })
 }
@@ -172,7 +172,7 @@ $scope.savedata=function(){
 
 $scope.uservideo=function(){
 $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {categories:$rootScope.categories,uploadername:$rootScope.uservideo,limit:2}  
 }).then(function(res){
@@ -183,7 +183,7 @@ $http({
 
 $scope.relcat=function(){
 $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {categories:$rootScope.categories,limit:10}  
 }).then(function(res){
@@ -211,7 +211,7 @@ $http({
       if($localStorage.token){
         io.socket.post('/comments/socketcomment',obj,function (resData, jwRes) { 
         })
-        $http.post('https://sailsserver.herokuapp.com/comments', obj).success(function(resp){
+        $http.post('http://sailsserver.herokuapp.com/comments', obj).success(function(resp){
           console.log(resp);
           $scope.comments=''; 
         }).error( function(err) {
@@ -232,7 +232,7 @@ $scope.$apply();
 
 if($stateParams.id){
 $http({
-     url: "https://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
      method: "GET",
      params: {video:$stateParams.id,limit:10}  
 }).then(function(resp){
@@ -247,7 +247,7 @@ for(var i=0; i<resp.data.length;i++){
 $scope.topcomments=function(){
 
   $http({
-     url: "https://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
      method: "GET",
      params: {video:$stateParams.id,limit:10}  
 }).then(function(resp){
@@ -266,7 +266,7 @@ $scope.mycomments=function(){
 
  if($localStorage.token){
   $http({
-     url: "https://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
      method: "GET",
      params: {video:$stateParams.id,email:$rootScope.user,limit:10}  
 }).then(function(resp){
@@ -285,7 +285,7 @@ $scope.mycomments=function(){
 
 
 $scope.views=function(){
-$http.put('https://sailsserver.herokuapp.com/uploads/' + $stateParams.id, 
+$http.put('http://sailsserver.herokuapp.com/uploads/' + $stateParams.id, 
     { 
       views:$rootScope.views+1
 
@@ -299,7 +299,7 @@ $scope.rate=function(){
   if($localStorage.token){
 console.log($scope.starRating1)
   $http({
-     url: "https://sailsserver.herokuapp.com/uploads", 
+     url: "http://sailsserver.herokuapp.com/uploads", 
      method: "GET",
      params: {id:$stateParams.id}  
 }).then(function(resp){
@@ -321,7 +321,7 @@ $scope.getRating();
   console.log($scope.starRating1)
   rateobj.usercount=$rootScope.usercount+1;
   rateobj.rating=$scope.starRating1+$rootScope.rating;
-  $http.put('https://sailsserver.herokuapp.com/uploads/' + $stateParams.id,rateobj).then(function(res)
+  $http.put('http://sailsserver.herokuapp.com/uploads/' + $stateParams.id,rateobj).then(function(res)
   {
     console.log(res)
   })
@@ -336,7 +336,7 @@ if($rootScope.user){
   var obj={username:$rootScope.user,history:$rootScope.history,historyid:$rootScope.userid};
   
 
-  $http.post('https://sailsserver.herokuapp.com/history/historycreate',obj).success(function(resp){
+  $http.post('http://sailsserver.herokuapp.com/history/historycreate',obj).success(function(resp){
           console.log(resp);
         }).error( function(err) {
           console.log(err);

@@ -9,7 +9,7 @@ angular.module('app')
      var obj={};
      obj.token=$stateParams.token;
      obj.id=$stateParams.id;
-     $http.post('https://sailsserver.herokuapp.com/auth/activate', obj).success(function(resp){
+     $http.post('  /auth/activate', obj).success(function(resp){
      console.log(resp);
      $rootScope.activateerror=resp.message;
      $scope.activateres();
@@ -58,7 +58,7 @@ angular.module('app')
    signinObj.email = $scope.credential.email;
 	 signinObj.password =$scope.credential.password;
               
-   $http.post('https://sailsserver.herokuapp.com/auth/signin', signinObj).success(function(resp){
+   $http.post('http://sailsserver.herokuapp.com/auth/signin', signinObj).success(function(resp){
 	 console.log(resp);
    $localStorage.token =resp.token;
    $localStorage.form1=resp.user.form1;
@@ -101,7 +101,7 @@ angular.module('app')
 	};
   if($localStorage.token){
   $http({
-     url: "https://sailsserver.herokuapp.com/user", 
+     url: "http://sailsserver.herokuapp.com/user", 
      method: "GET",
      params: {id:$rootScope.id}  
  }).then(function(res){
@@ -157,7 +157,7 @@ angular.module('app')
     personalobj.city=$scope.city;
     personalobj.pincode=$scope.pincode;
 
-    $http.post('https://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/personaldetails/add', personalobj).success(function(resp){
 
     console.log(resp);
 
@@ -169,7 +169,7 @@ angular.module('app')
     }
     $scope.personalupdate=function(){
     $http({
-     url: "https://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
+     url: "http://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
      method: "PUT",
      params: {form1:true}  
     }).then(function(res){
@@ -191,7 +191,7 @@ angular.module('app')
     socialobj.youtubeurl=$scope.youtubeurl;
     socialobj.linkedinurl=$scope.linkedinurl;
 
-      $http.post('https://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
+      $http.post('http://sailsserver.herokuapp.com/socialdetails/add', socialobj).success(function(resp){
 
         console.log(resp);
 
@@ -203,7 +203,7 @@ angular.module('app')
     }
     $scope.userupdate=function(){
     $http({
-     url: "https://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
+     url: "http://sailsserver.herokuapp.com/user/"+ $rootScope.id, 
      method: "PUT",
      params: {form2:true}  
     }).then(function(res){
@@ -222,7 +222,7 @@ angular.module('app')
     contactobj.mobilenumber=$scope.mobilenumber;
     contactobj.otp=$scope.otp;
 
-      $http.post('https://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
+      $http.post('http://sailsserver.herokuapp.com/contactdetails/add', contactobj).success(function(resp){
 
         console.log(resp);
       
@@ -235,7 +235,7 @@ angular.module('app')
 }
     $scope.contactupdate=function(){
     $http({
-     url: "https://sailsserver.herokuapp.com/user/"+$rootScope.id, 
+     url: "http://sailsserver.herokuapp.com/user/"+$rootScope.id, 
      method: "PUT",
      params: {form3:true}  
     }).then(function(res){
@@ -248,7 +248,7 @@ angular.module('app')
 
 // $scope.getpersonaldetail=function(){
   $http({
-   url: "https://sailsserver.herokuapp.com/personaldetails/", 
+   url: "http://sailsserver.herokuapp.com/personaldetails/", 
    method: "GET",
    params: {userid:$rootScope.id}  
   }).then(function(res){
@@ -267,7 +267,7 @@ angular.module('app')
 
   });
     $http({
-         url: "https://sailsserver.herokuapp.com/socialdetails/", 
+         url: "http://sailsserver.herokuapp.com/socialdetails/", 
          method: "GET",
          params: {userid:$rootScope.id}  
     }).then(function(res){

@@ -4,7 +4,7 @@ var app=angular.module('app')
   app.controller('NotifyCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast) {
 
     $http({
-     url: 'https://sailsserver.herokuapp.com/notification' +'/count', 
+     url: 'http://sailsserver.herokuapp.com/notification' +'/count', 
      method: "GET",
      params:  {ownerid:$rootScope.user}  
 }).then(function(res){
@@ -30,7 +30,7 @@ $scope.page = 1;
     $scope.fetching=true;
   console.log('trigger')
      $http({
-     url: 'https://sailsserver.herokuapp.com/notification/', 
+     url: 'http://sailsserver.herokuapp.com/notification/', 
      method: "GET",
      params: {ownerid:$rootScope.user,limit:$scope.usersPerPage,skip:($scope.page- 1) * $scope.usersPerPage}  
 }).then(function(result){

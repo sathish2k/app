@@ -3,7 +3,7 @@
 angular.module('app')
   .controller('FollowersCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
   $http({
-     url: "https://sailsserver.herokuapp.com/user", 
+     url: "http://sailsserver.herokuapp.com/user", 
      method: "GET",
      params: {"id":$stateParams.id}  
 }).then(function(res){
@@ -37,7 +37,7 @@ $scope.isFavorites = function(id) {
     console.log(pageNumber)
         
         $http({
-     url: 'https://sailsserver.herokuapp.com/user/?sort=name ASC', 
+     url: 'http://sailsserver.herokuapp.com/user/?sort=name ASC', 
      method: "GET",
      params: {where:{"id":$rootScope.datafollowers},limit:$scope.usersPerPage,skip:(pageNumber- 1) * $scope.usersPerPage}  
 }).then(function(res){
@@ -49,7 +49,7 @@ $scope.isFavorites = function(id) {
   });
     }
       $http({
-     url: 'https://sailsserver.herokuapp.com/user' +'/count', 
+     url: 'http://sailsserver.herokuapp.com/user' +'/count', 
      method: "GET",
      params:  {where:{"id":$rootScope.datafollowers}}  
 }).then(function(res){
@@ -67,7 +67,7 @@ $scope.follow=function(id){
     subobj.id=id;
     subobj.owner=$rootScope.id;
    
-    $http.post('https://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/user/follow',subobj).success(function(resp){
       console.log(resp);
        
        $localStorage.follow=resp.userdata.following;
@@ -81,7 +81,7 @@ $scope.follow=function(id){
    var unsubobj={};
     unsubobj.vidsid=id;
     unsubobj.id=$rootScope.id;
-    $http.post('https://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/user/remove',unsubobj).success(function(resp){
       console.log(resp);
        $localStorage.follow=resp.userdata.following;
        $rootScope.datasfollowing=resp.userdata.following;

@@ -17,7 +17,7 @@ angular.module('app')
 
     $scope.showMobileMainHeader = true;
      $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {categories:'Short Film',limit:8}  
 }).then(function(res){
@@ -29,7 +29,7 @@ angular.module('app')
 
   });
  $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {categories:'Music',limit:8}  
 }).then(function(res){
@@ -41,7 +41,7 @@ angular.module('app')
 
   });
 $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {categories:'Dance',limit:8}  
 }).then(function(res){
@@ -69,7 +69,7 @@ if($localStorage.token){
  // $scope.get=function(){
 
 $http({
-     url: 'https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
+     url: 'http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
      method: "GET",
      params:  {where:{"uploaderid":$rootScope.follow,limit:8}}  
 }).then(function(res){

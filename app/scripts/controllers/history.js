@@ -20,7 +20,7 @@ angular.module('app')
     console.log(pageNumber)
   	if($rootScope.user){
     $http({
-     url: "https://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
+     url: "http://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
      method: "GET",
      params: {username:$rootScope.user,limit:$scope.usersPerPage,skip:(pageNumber- 1) * $scope.usersPerPage}  
 }).then(function(resp){
@@ -35,7 +35,7 @@ angular.module('app')
 };
 }
  $http({
-     url: 'https://sailsserver.herokuapp.com/history' +'/count', 
+     url: 'http://sailsserver.herokuapp.com/history' +'/count', 
      method: "GET",
      params: {username:$rootScope.user}  
 }).then(function(res){
@@ -47,7 +47,7 @@ angular.module('app')
   });
  $scope.delete=function(){
     var obj={username:$rootScope.user};
-    $http.post(' /history/delete',obj).success(function(resp){
+    $http.post('http://sailsserver.herokuapp.com/history/delete',obj).success(function(resp){
           console.log(resp);
           $scope.reload();
         }).error( function(err) {
@@ -56,7 +56,7 @@ angular.module('app')
   };
 $scope.reload=function(){
 	$http({
-     url: "https://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
+     url: "http://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
      method: "GET",
      params: {username:$rootScope.user}  
 }).then(function(resp){
@@ -90,7 +90,7 @@ $scope.alert = '';
 
   $scope.deletesingle=function(id){
   $http({
-    url: 'https://sailsserver.herokuapp.com/history', 
+    url: 'http://sailsserver.herokuapp.com/history', 
     method: "DELETE",
     params: {id: id}
    }).then(function(res)
@@ -103,7 +103,7 @@ $scope.alert = '';
 };
  $scope.get=function(){
 $http({
-     url: "https://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
+     url: "http://sailsserver.herokuapp.com/history?sort=updatedAt DESC", 
      method: "GET",
      params: {username:$rootScope.user}  
 }).then(function(resp){

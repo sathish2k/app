@@ -3,7 +3,7 @@
 angular.module('app')
   .controller('MoviesCtrl', function ($scope,$http,$stateParams,$rootScope) {
     $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
      params: {language:$stateParams.language,categories:$stateParams.categories,limit:8}  
 }).then(function(res){
@@ -15,7 +15,7 @@ angular.module('app')
 
   });
 $http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=views DESC", 
+     url: "http://sailsserver.herokuapp.com/uploads?sort=views DESC", 
      method: "GET",
      params: {language:$stateParams.language,categories:$stateParams.categories,limit:8}  
 }).then(function(res){
@@ -27,7 +27,7 @@ $http({
 
   });
 $http({
-     url: 'https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
+     url: 'http://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
      method: "GET",
      params:  {where:{"uploaderid":$rootScope.follow,language:$stateParams.language,categories:$stateParams.categories,limit:8}}  
 }).then(function(res){

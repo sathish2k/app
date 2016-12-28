@@ -19,7 +19,7 @@ angular.module('app')
     console.log(pageNumber)
         
         $http({
-     url: 'https://sailsserver.herokuapp.com/uploads/?sort=createdAt DESC', 
+     url: 'http://sailsserver.herokuapp.com/uploads/?sort=createdAt DESC', 
      method: "GET",
      params: {where:{"name":{"contains":$stateParams.contains},"uploaderid":$stateParams.uploaderid},limit:$scope.usersPerPage,skip:(pageNumber- 1) * $scope.usersPerPage}  
 }).then(function(res){
@@ -30,7 +30,7 @@ angular.module('app')
   });
     }
       $http({
-     url: 'https://sailsserver.herokuapp.com/uploads' +'/count', 
+     url: 'http://sailsserver.herokuapp.com/uploads' +'/count', 
      method: "GET",
      params:  {where:{"name":{"contains":$stateParams.contains},"uploaderid":$stateParams.uploaderid}}  
 }).then(function(res){
