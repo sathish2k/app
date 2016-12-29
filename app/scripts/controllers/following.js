@@ -16,7 +16,13 @@ $rootScope.datafollowing=res.data.following;
    $scope.get();
   })
 $scope.isFavorites = function(id) {
+      if ($rootScope.id==$stateParams.id) {
        return $rootScope.datafollowing.indexOf(id) !== -1;
+     }
+     else{
+      return $localStorage.follow.indexOf(id) !== -1;
+     }
+
    }
   $scope.get=function(){
 

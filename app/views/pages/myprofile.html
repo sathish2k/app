@@ -9,7 +9,7 @@
           <div class="m-b m-t-sm h2">
             <span class="">{{profile[0].username}}</span>
           </div>
-           <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ><div ng-cloak ng-if=!$root.isfollow ng-click="follow()">Follow</div><div ng-cloak ng-if=$root.isfollow ng-click="unfollow()">Following</div></button>
+            <button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ng-click="$root.isfollow? unfollow() : follow()">{{ $root.isfollow ? 'following' : 'Follow' }}</button>
           <p ng-repeat="detail in profile.personaldetails">
             
           </p>

@@ -102,6 +102,18 @@ $http({
    
 console.log($scope.videos)
   });
+$http({
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
+     method: "GET",
+     params: {where:{"name":{"contains":$scope.searchvideo},"uploadername":$stateParams.user}}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.count = res.data.count;
+console.log($scope.count)
+  });
+}
 
 }
 
