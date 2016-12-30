@@ -81,10 +81,10 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-12" align="center" ng-repeat="upload in recentupload |limitTo:1">
+ 
+</div> <div class="col-lg-12" align="center" ng-repeat="upload in recentupload |limitTo:1">
     <button ui-sref="app.recentupload({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
   </div>  
-</div>
 
  <div class="row">
   <div class="col-lg-12">
@@ -121,10 +121,10 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
+  
+</div><div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
     <button ui-sref="app.mostviewed({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
   </div>  
-</div>
 
 <div class="row" ng-if=$root.id>
   <div class="col-lg-12">
@@ -161,9 +161,9 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
+  
+</div>
+        <div class="col-lg-12" align="center" ng-repeat="upload in mostviewed | limitTo:1">
     <button ui-sref="app.youmaylikelistcat({categories:upload.categories,language:upload.language})" md-ink-ripple class="md-btn md-raised m-b btn-fw indigo">See More</button>  
   </div> 
-</div>
-        
       
