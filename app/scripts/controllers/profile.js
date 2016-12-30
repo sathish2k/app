@@ -76,7 +76,7 @@ $scope.showConfirm = function(ev) {
       $scope.status = 'Cancelled';
     });
   };
-  if($rootScope.id!=$rootScope.profileid){
+  if($rootScope.id!=$rootScope.profileid && $localStorage.token){
 var fobj={};
   console.log('follow')
     fobj.vidsid=$stateParams.user;
