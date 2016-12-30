@@ -2,10 +2,7 @@
 
 angular.module('app')
   .controller('ProfileCtrl', function ($scope,$state,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
-  if($rootScope.user!=$stateParams.user){
-    $state.go('app.myprofile',{user:$stateParams.user})
-
-  }
+ 
 
 
   $http({
