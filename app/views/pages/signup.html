@@ -22,11 +22,13 @@
         </md-input-container> 
         <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
                   <label>Username</label>
-                 <input name="username" ng-blur="checkuser()" ng-focus="clearuser()" ng-maxlength="20" type="text" class="md-input" ng-model="username" required="required"> 
+                 <input name="username" ng-blur="checkuser()" ng-focus="clearuser()" ng-minlength="2" ng-maxlength="22" type="text" class="md-input" ng-model="username" required="required" ng-pattern='/^[a-zA-Z0-9._]+$/'> 
                   <div  ng-messages="validate.username.$error">
                   <span class="emailvalid" ng-if="(usermessage)" >Username is already taken</span>
                 
-                 <div ng-message="maxlength">Username should not be maximum 20 characters </div>
+                 <div ng-message="maxlength">Username should not be maximum of 22 characters in length</div>
+                 <div ng-message="minlength">Username should be minimum of 2 characters in length </div>
+                 <div ng-message="pattern">Username Can Only Contain Numbers, Letters, Periods and Underscores</div>
                   <div ng-message="required">Please Enter Your Username</div>
                   </div>
         </md-input-container> 
