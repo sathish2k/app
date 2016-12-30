@@ -327,6 +327,9 @@ angular.module('app')
              $state.go('access.forgot-password');
              }
          
+
+
+
             if($localStorage.token){
               console.log('enter')
               
@@ -355,6 +358,11 @@ angular.module('app')
           document.body.scrollTop = document.documentElement.scrollTop = 0;
           $("html,body").animate({scrollTop:0},1000);
           $rootScope.user=$localStorage.user;
+           if(toState.name=='app.myprofile' && $localStorage.token)
+    {
+      event.preventDefault();
+      $state.go('app.profile',{ 'user':$rootScope.user })
+    }
           console.log($rootScope.user)
            window.onload=function(){
             if ($localStorage.token) {
