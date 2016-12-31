@@ -74,7 +74,10 @@ var app=angular.module('app')
   });
 
 	var uploadObj = {};
-	$scope.add = function(){
+	$scope.add = function(form){
+    if (form.$valid) {
+      
+   
 		uploadObj.owner=$rootScope.id;
     uploadObj.crew=$scope.personalDetails;
     uploadObj.rating;
@@ -107,6 +110,7 @@ var app=angular.module('app')
           $scope.error();
 	      });
 // $scope.upload.Name=null;
+}
 	};
    $scope.error = function() {
    $mdToast.show(
