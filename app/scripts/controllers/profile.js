@@ -1,7 +1,18 @@
 'use strict';
 
-angular.module('app')
-  .controller('ProfileCtrl', function ($scope,$state,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
+var app=angular.module('app');
+ app.factory('verifyDelete', function($mdDialog) {
+  return function(user) {
+    var confirm = $mdDialog.confirm()
+      .title('Are you sure!, Do you want to Delete')
+      .content('The Deleted Videos No Longer Available')
+      .ariaLabel('Delete User')
+      .ok('Delete User')
+      .cancel('Cancel');
+    return $mdDialog.show(confirm);
+  }
+})
+  app.controller('ProfileCtrl', function ($scope,$state,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
  
 
 
@@ -156,15 +167,5 @@ $http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(
    $scope.followerscount=res.data.followers;
 })
 }
-})
-  .factory('verifyDelete', function($mdDialog) {
-  return function(user) {
-    var confirm = $mdDialog.confirm()
-      .title('Are you sure!, Do you want to Delete')
-      .content('The Deleted Videos No Longer Available')
-      .ariaLabel('Delete User')
-      .ok('Delete User')
-      .cancel('Cancel');
-    return $mdDialog.show(confirm);
-  }
-})
+});
+ 
