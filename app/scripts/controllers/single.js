@@ -185,13 +185,6 @@ $http({
 }
 
 $scope.relcatvideo=function(){
-$http({
-     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
-     method: "GET",
-     params: {categories:$rootScope.categories,limit:8}  
-}).then(function(res){
-  console.log(res);
-  $scope.relcat = res.data;
    $http({
      url: 'https://sailsserver.herokuapp.com/uploads/count', 
      method: "GET",
@@ -203,6 +196,14 @@ $http({
     $scope.count = res.data.count;
 console.log($scope.count)
   });
+$http({
+     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     method: "GET",
+     params: {categories:$rootScope.categories,limit:8}  
+}).then(function(res){
+  console.log(res);
+  $scope.relcat = res.data;
+  
 
 });
 }
