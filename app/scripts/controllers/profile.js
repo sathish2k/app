@@ -69,12 +69,13 @@ $scope.showConfirm = function(ev) {
           .targetEvent(ev)
           .ok('Ok')
           .cancel('Cancel');
-
+$scope.del=function(id){
     $mdDialog.show(confirm).then(function() {
       $scope.status = 'Deleted Succesfully';
     }, function() {
       $scope.status = 'Cancelled';
     });
+  }
   };
   if($rootScope.id!=$rootScope.profileid && $localStorage.token){
 var fobj={};
