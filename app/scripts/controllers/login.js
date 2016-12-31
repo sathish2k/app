@@ -306,7 +306,6 @@ angular.module('app')
               if((toState.data.afterlogin=='true')&&($localStorage.form1&&$localStorage.form2&&$localStorage.form3==true)){
                 console.log('gg')
               event.preventDefault();
-              
 
              $state.go('access.forgot-password');
             
