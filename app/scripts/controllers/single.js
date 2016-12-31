@@ -188,7 +188,7 @@ $scope.relcat=function(){
 $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
-     params: {categories:$rootScope.categories,limit:10}  
+     params: {categories:$rootScope.categories,limit:4}  
 }).then(function(res){
   console.log(res);
   $scope.relcat = res.data;
@@ -334,6 +334,24 @@ else
    $location.path('auth/signin/' +$stateParams.id);
 
 };
+$scope.relcat=[];
+$scope.page=1;
+$scope.more=function(){
+  $scope.page++;
+  $http({
+     url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
+     method: "GET",
+     params: {categories:$rootScope.categories,limit:4,skip:($scope.page-1)*10}  
+}).then(function(res){
+  console.log(res);
+  $scope.relcat = res.data;
+});
+}
+
+
+
+
+
  $scope.history=function(){
 if($rootScope.user){
   var obj={username:$rootScope.user,history:$rootScope.history,historyid:$rootScope.userid};
