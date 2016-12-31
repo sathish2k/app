@@ -7,7 +7,7 @@ var app=angular.module('app');
       .title('Are you sure!, Do you want to Delete')
       .content('The Deleted Videos No Longer Available')
       .ariaLabel('Delete User')
-      .ok('Delete User')
+      .ok('Delete Video')
       .cancel('Cancel');
     return $mdDialog.show(confirm);
   }
@@ -98,22 +98,7 @@ $scope.delete = function(user) {
     });
   }
 
-// $scope.showConfirm = function(ev) {
-    
-//     var confirm = $mdDialog.confirm()
-//           .title('Are you sure!, Do you want to Delete')
-//           .textContent('The Deleted Videos No Longer Available')
-//           .targetEvent(ev)
-//           .ok('Ok')
-//           .cancel('Cancel');
-// $scope.del=function(id){
-//     $mdDialog.show(confirm).then(function() {
-//       $scope.status = 'Deleted Succesfully';
-//     }, function() {
-//       $scope.status = 'Cancelled';
-//     });
-//   }
-//   };
+
   if($rootScope.id!=$rootScope.profileid && $localStorage.token){
 var fobj={};
   console.log('follow')

@@ -14,7 +14,8 @@ $scope.videos=res.data;
   });
 
 
-$scope.del=function(id){
+$scope.del=function(user){
+  verifyDelete(user).then(function() {
   $http({
     url: 'https://sailsserver.herokuapp.com/uploads', 
     method: "DELETE",
@@ -36,7 +37,7 @@ $scope.del=function(id){
    
   
   });
-
+});
 };
 
 $scope.get=function(){
