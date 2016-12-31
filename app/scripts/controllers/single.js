@@ -105,7 +105,7 @@ video.on('resolutionchange', function() {
   $scope.link();
    $scope.views();
    $scope.uservideo();
-   $scope.relcat();
+   $scope.relcatvideo();
    $scope.history();
 });
 $scope.link=function(){
@@ -184,7 +184,7 @@ $http({
 });
 }
 
-$scope.relcat=function(){
+$scope.relcatvideo=function(){
 $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
