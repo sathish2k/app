@@ -318,7 +318,7 @@ angular.module('app')
             }else if(toState.data.isloggedin == 'true'&&!$localStorage.token) {
             console.log("UN AUTHORIZED!!!");
              event.preventDefault();
-            $location.path('/signup');
+            $location.path('/auth/signup');
             }
              $rootScope.id=$localStorage.id;
               
