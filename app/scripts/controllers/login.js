@@ -288,7 +288,7 @@ angular.module('app')
 // }
 
   })
-  .run(['$rootScope','$location',  '$localStorage',  function ($rootScope, $location, $localStorage)
+  .run(['$rootScope','$location', '$state', '$localStorage',  function ($rootScope, $location,$state, $localStorage)
     {
            $rootScope.$on('$stateChangeError', function(event) {
          $state.go('app');
