@@ -288,7 +288,7 @@ angular.module('app')
 // }
 
   })
-  .run(['$rootScope', '$state', '$localStorage',  function ($rootScope, $state, $localStorage)
+  .run(['$rootScope', '$state', '$localStorage','$location',  function ($rootScope, $location, $localStorage)
     {
            $rootScope.$on('$stateChangeError', function(event) {
          $state.go('app');
@@ -318,7 +318,7 @@ angular.module('app')
             }else if(toState.data.isloggedin == 'true'&&!$localStorage.token) {
             console.log("UN AUTHORIZED!!!");
              event.preventDefault();
-             $state.go('access.signin');
+             $location.path('/auth/signin');
             }
              $rootScope.id=$localStorage.id;
               
