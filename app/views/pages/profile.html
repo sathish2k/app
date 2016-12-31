@@ -147,8 +147,8 @@
                           <i class="mdi-navigation-more-vert text-md"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
-                          <li><a href>Action</a></li>
-                          <li><a href>Another action</a></li>
+                          <li><a ui-sref="app.uploadedit({id:detail.id})">Edit</a></li>
+                          <li><a ng-click="showConfirm($event)">Delete</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -165,7 +165,7 @@
                         <h5><b>Genre : </b>{{detail.subcategories}}</h5>
                         <h5><b>Views : </b>{{detail.views}}</h5>
                         <hr style="margin:10px;" />
-                        <p>
+                        <p class="breakword">
                           {{detail.discription}}
                         </p>
                       </div>
@@ -194,7 +194,7 @@
                           <i class="mdi-navigation-more-vert text-md"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color" >
-                          <li ng-click="showConfirm($event)"><a href>Hide</a></li>
+                         <!--  <li ng-click="showConfirm($event)"><a href>Hide</a></li> -->
                           <li ng-controller="ReportCtrl" ng-click="showAdvanced($event)"><a href>Report</a></li>
                         </ul>
                       </li>
@@ -212,7 +212,7 @@
                         <h5><b>Genre : </b>{{videos.subcategories}}</h5>
                         <h5><b>Views : </b>{{videos.views}}</h5>
                         <hr style="margin:10px;" />
-                        <p>
+                        <p class="breakword">
                           {{videos.discription}}
                         </p>
                       </div>
