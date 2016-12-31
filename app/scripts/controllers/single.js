@@ -341,10 +341,14 @@ $scope.more=function(){
   $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
-     params: {categories:$rootScope.categories,limit:4,skip:($scope.page-1)*10}  
+     params: {categories:$rootScope.categories,limit:4,skip:($scope.page-1)*4}  
 }).then(function(res){
   console.log(res);
-  $scope.relcat = res.data;
+  for(var i=0; i<res.data.length;i++){
+        $scope.relcat.push(res.data[i])
+       
+      }
+  // $scope.relcat = res.data;
 });
 }
 
