@@ -173,13 +173,20 @@
                             <i class="mdi-navigation-more-vert text-md"></i>
                           </a>
                           <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
-                            <li><a href>Edit</a></li>
+                            <li><a href ng-click="showDetails = ! showDetails" >Edit</a></li>
                             <li><a href>Delete</a></li>
                           </ul>
                         </li>
                       </ul>
                     </div>
+                    <div ng-show="showDetails">
+                      <form style="margin-bottom: 10px;">
+                        <textarea  class="form-control no-border p-md" rows="2" ng-model="comments" placeholder="Comment..." style="resize: vertical;"></textarea>
+                      </form>
+                      <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" style="float: right;">Update Comment</button>
+                    </div>
                     <hr style="margin:0px;" />
+                    
                   </div>
                 </div>
                 <div role="tabpanel" class="tab-pane animated fadeInDown " id="tab_2">
@@ -285,7 +292,7 @@
         </div>
       </div> 
       <div align="center" >
-    <button ng-click="more()" ng-if="count!=relcat.length" || ng-if="count>8" md-ink-ripple  class="md-btn md-raised m-b btn-fw">See More</button>  
+    <button ng-click="more()" md-ink-ripple ng-if="count!=relcat.length" || ng-if="count>8" class="md-btn md-raised m-b btn-fw">See More</button>  
   </div>
     </div>
   </div>
