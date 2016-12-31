@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-  .controller('ProfilevideoCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
+  .controller('ProfilevideoCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog,verifyDelete) {
   $http({
      url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
