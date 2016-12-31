@@ -69,6 +69,11 @@ $scope.userupdade=function(){
 }
 
 $scope.contactdetail=function(){
+  $scope.myDate = new Date();
+  $scope.maxDate = new Date(
+      $scope.myDate.getFullYear()-3,
+      $scope.myDate.getMonth(),
+      $scope.myDate.getDate()); 
 var contactobj={};
 contactobj.userid=$rootScope.firstlogin;
 contactobj.owner=$rootScope.firstlogin;

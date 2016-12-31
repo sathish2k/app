@@ -1,8 +1,15 @@
 
 
 var app=angular.module('app')
-  .controller('UploadCtrl', function ($scope,$http,$rootScope,$mdToast,$state,$location,$state) {
-    $scope.tags=[];
+  .controller('UploadCtrl', function ($scope,$http,$rootScope,$mdToast,$state,$location,$state,$mdConstant) {
+     // $scope.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+    $scope.tags = [];
+
+    // Any key code can be used to create a custom separator
+    var semicolon = 186;
+    var tab = 9;
+    $scope.Keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon,$mdConstant.KEY_CODE.TAB, tab];
+    
   	$scope.list = {
     "Short Film": [
       "Adventure",

@@ -27,6 +27,10 @@
 
                 </div>
               </md-input-container>
+              <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-max-date="maxDate"></md-datepicker>
+              <div class="errors" ng-messages="form.dateField.$error">
+              <div ng-message="required">This date is required!</div>
+              </div>
         </div>
         <footer class="p text-right">
           <button type="submit"  class="md-btn md-raised p-h-md {{app.setting.theme.primary}}">Save</button>

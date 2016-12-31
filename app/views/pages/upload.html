@@ -11,14 +11,15 @@
 	        </ul>
         	<div class="tab-content p m-b-md clear b-t b-t-2x">
           		<div role="tabpanel" class="tab-pane animated fadeInDown active" id="tab_7">
+          			<form name="uploadForm">          		
            			<div class="col-lg-8">
 	           			<div layout="row">
 					        <md-input-container flex="50">
-					          <label style="font-size: large;" >Name</label>
-					          <input required name="Name" style="font-size: large;" ng-model="upload.Name" md-maxlength="150">
+					          <label style="font-size: large;" >Title</label>
+					          <input required name="Name" style="font-size: large;" ng-model="upload.Name" md-maxlength="100">
 					          <div ng-messages="uploadForm.Name.$error">
-					            <div ng-message="required">Name filed is required.</div>
-					            <div ng-message="md-maxlength">The Name must be less than 150 characters long.</div>
+					            <div ng-message="required">Please Select Video Title</div>
+					            <div ng-message="md-maxlength">The Title must be less than 100 characters long.</div>
 					          </div>
 					        </md-input-container>
 					        <md-input-container flex="50">
@@ -27,51 +28,59 @@
 					            <md-option value="public" >Public</md-option>
 					            <md-option value="private">Private</md-option>
 					          </md-select>
-					          
+					          <div ng-messages="uploadForm.type.$error">
+					          <div class="error" ng-message="required">Please select video Privacy</div>
+					          </div>				          
 					        </md-input-container>
-			    		</div>
-					    
+			    		</div>					    
 					    <md-input-container class="md-block" style="margin-bottom: 0px;">
 							<label style="font-size: large;">Youtube Video Link</label>
-							<input style="font-size: large;" required  name="link" ng-model='upload.link' type="url" pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)">
-							<div ng-messages="uploadForm.link.$error">
+							<input style="font-size: large;" required  name="youtubelink" ng-model='upload.link' type="url" pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)">
+							<div ng-messages="uploadForm.youtubelink.$error">
 			   			 		<div ng-message="required">This is required.</div>
 			   			 		<div ng-message="pattern">Youtube link only....</div>
 							</div>
 						</md-input-container>
-		      			
-		      			<md-chips ng-model="tags" required ng-maxlenght="3" placeholder="Enter a tag"readonly="isReadonly"></md-chips>
-							<div ng-messages="tag.$error">
+		      			<md-chips ng-model="tags" md-separator-keys="Keys" name="seotag" ng-maxlength="35" placeholder="Enter video Tags"></md-chips>
+		      			<!-- <md-chips ng-model="tags" separator-keys="keys" name="tag" required ng-maxlenght="3" placeholder="Enter a tag" required="required"></md-chips> -->
+							<!-- <div class="errors" ng-messages="uploadForm.tag.$error">
 					          <div ng-message="required">This is required.</div>
-					        </div>									    
+					        </div> -->									    
+					        <!-- <span ng-show="uploadForm.tags.length == 0 && uploadForm.tag.$dirty">required</span> -->
 		    
 					    <md-input-container class="md-block" style="margin-top: 35px;" >
 					     	<label style="font-size: large;">Description</label>
-					        <input md-maxlength="1000" required style="font-size: large;" md-no-asterisk name="description" ng-model="upload.description">
+					        <input md-maxlength="1000" required style="font-size: large;" md-no-asterisk name="description" ng-model="upload.description" required="required">
 					        <div ng-messages="uploadForm.description.$error">
-					          <div ng-message="required">This is required.</div>
-					          <div ng-message="md-maxlength">The description must be less than 500 characters long.</div>
+					          <div ng-message="required">Please Submit Your Video Link</div>
+					          <div ng-message="md-maxlength">The Description Must Be Less Than 1000 Characters Long.</div>
 					        </div>
 					    </md-input-container>
 					    
 					    <md-input-container style="width: 210px;">
 							<label style="font-size: large;">Category</label>
-							<md-select style="margin-bottom: 20px;" ng-model="upload.category" >
+							<md-select name="category" style="margin-bottom: 20px;" ng-model="upload.category" required>
 				            	<md-option data-ng-repeat="(k,v) in list" ng-value="k">{{ k }}</md-option>
 				        	</md-select>
+				        	<div class="errors" ng-messages="uploadForm.category.$error">
+				        		<div ng-message="required">Please Select Video Category</div>
+				        	</div>
 				    	</md-input-container>
 
 				    	<md-input-container style="width: 210px;">
 						    <label style="font-size: large;">Sub Category</label>
-						    <md-select style="margin-bottom: 20px;" ng-model="upload.sub">
+						    <md-select name="subcat" style="margin-bottom: 20px;" ng-model="upload.sub" required>
 						       	<md-option data-ng-repeat="t in level2" ng-value="t">{{ t }}
 						       	</md-option>
 						    </md-select>
+						    <div class="errors" ng-messages="uploadForm.subcat.$error">
+						    	<div ng-message="required">Please select Video Sub-Category</div>
+						    </div>
 						</md-input-container>
 
 						<md-input-container style="width: 210px;">
 			          		<label style="font-size: large;">Language</label>
-			          		<md-select name="type" style="margin-bottom: 20px;" ng-model="upload.lang" required>
+			          		<md-select name="language" style="margin-bottom: 20px;" ng-model="upload.lang" required>
 			            		<md-option value="Bengali">Bengali</md-option>
 			            		<md-option value="English">English</md-option>
 			            		<md-option value="Gujarathi">Gujarathi</md-option>
@@ -84,17 +93,18 @@
 			            		<md-option value="Telugu">Telegu</md-option>
 			            		<md-option value="Urdu">Urdu</md-option>
 			            	</md-select>
+			            	<div class="errors" ng-messages="uploadForm.language.$error">
+			            		<div ng-message="required">Please Select Video Language</div>
+			            	</div>
 			        	</md-input-container>
 			        </div>
 			        <div class="col-lg-4">
-			        	
-			        	<div class="card">
-			        		<h3>Video Thumbnail</h3>
-			        	<img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="">		
-			        	</div>
-			        	<button md-ink-ripple ng-click="add()" class="md-btn md-raised pull-right p-h-md {{app.setting.theme.accent}}">Publish</button>
+			        	<img width="100%" ng-src="http://img.youtube.com/vi/{{upload.link.substr(-11)}}/mqdefault.jpg" class="md-card-image" alt="">
+			        	<button md-ink-ripple ng-click="add(uploadForm)" class="md-btn md-raised pull-right p-h-md {{app.setting.theme.accent}}">Publish</button>
 			        </div>
 			        <!--  -->
+
+			      </form>
           		</div>
           <div role="tabpanel" class="tab-pane animated fadeInDown" id="tab_8">
           <div class="row">
