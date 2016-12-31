@@ -1,7 +1,7 @@
 'use strict';
 
 var app=angular.module('app');
- app.service('verifyDelete', function($mdDialog) {
+ app.factory('verifyDelete', function($mdDialog) {
   return function(user) {
     var confirm = $mdDialog.confirm()
       .title('Are you sure!, Do you want to Delete')
@@ -12,7 +12,7 @@ var app=angular.module('app');
     return $mdDialog.show(confirm);
   }
 })
-  app.controller('ProfileCtrl', function ($scope,$state,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog) {
+  app.controller('ProfileCtrl', function ($scope,$state,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog, verifyDelete) {
  
 
 
