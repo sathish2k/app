@@ -61,22 +61,48 @@ $http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(
    $scope.followerscount=res.data.followers;
 })
 
-$scope.showConfirm = function(ev) {
+$scope.delete = function(user) {
+    verifyDelete(user).then(function() {
+      $http({
+    url: 'https://sailsserver.herokuapp.com/uploads', 
+    method: "DELETE",
+    params: {id: user}
+   }).then(function(res)
+  {
+  // $scope.get();
+    console.log(res);
+    $http({
+    url: 'https://sailsserver.herokuapp.com/history/userdelete', 
+    method: "DELETE",
+    params: {historyid: user}
+   }).then(function(res)
+  {
+    console.log(res);
     
-    var confirm = $mdDialog.confirm()
-          .title('Are you sure!, Do you want to Delete')
-          .textContent('The Deleted Videos No Longer Available')
-          .targetEvent(ev)
-          .ok('Ok')
-          .cancel('Cancel');
-$scope.del=function(id){
-    $mdDialog.show(confirm).then(function() {
-      $scope.status = 'Deleted Succesfully';
-    }, function() {
-      $scope.status = 'Cancelled';
+  
+  });
+   
+  
+  });
     });
   }
-  };
+
+// $scope.showConfirm = function(ev) {
+    
+//     var confirm = $mdDialog.confirm()
+//           .title('Are you sure!, Do you want to Delete')
+//           .textContent('The Deleted Videos No Longer Available')
+//           .targetEvent(ev)
+//           .ok('Ok')
+//           .cancel('Cancel');
+// $scope.del=function(id){
+//     $mdDialog.show(confirm).then(function() {
+//       $scope.status = 'Deleted Succesfully';
+//     }, function() {
+//       $scope.status = 'Cancelled';
+//     });
+//   }
+//   };
   if($rootScope.id!=$rootScope.profileid && $localStorage.token){
 var fobj={};
   console.log('follow')
@@ -130,4 +156,15 @@ $http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(
    $scope.followerscount=res.data.followers;
 })
 }
-});
+})
+  .factory('verifyDelete', function($mdDialog) {
+  return function(user) {
+    var confirm = $mdDialog.confirm()
+      .title('Are you sure!, Do you want to Delete')
+      .content('The Deleted Videos No Longer Available')
+      .ariaLabel('Delete User')
+      .ok('Delete User')
+      .cancel('Cancel');
+    return $mdDialog.show(confirm);
+  }
+})
