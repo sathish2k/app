@@ -64,14 +64,14 @@ $http.post('https://sailsserver.herokuapp.com/user/show',postobj).then(function(
 $scope.showConfirm = function(ev) {
     
     var confirm = $mdDialog.confirm()
-          .title('Are you sure!, Do you want to Hide')
-          .textContent('You can View the hidden Videos under the Settings Page')
+          .title('Are you sure!, Do you want to Delete')
+          .textContent('The Deleted Videos No Longer Available')
           .targetEvent(ev)
           .ok('Ok')
           .cancel('Cancel');
 
     $mdDialog.show(confirm).then(function() {
-      $scope.status = 'Hidden Succesfully';
+      $scope.status = 'Deleted Succesfully';
     }, function() {
       $scope.status = 'Cancelled';
     });
