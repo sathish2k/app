@@ -41,6 +41,17 @@ var app=angular.module('app');
   $rootScope.uservideo=res.data.uploadername;
   $rootScope.userid=res.data.id;
   $rootScope.categories=res.data.categories;
+  $http({
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
+     method: "GET",
+     params: {categories:$rootScope.categories}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.count = res.data.count;
+console.log($scope.count)
+  });
   $rootScope.uploaderid=res.data.uploaderid;
   $rootScope.link=res.data.link;
   console.log($rootScope.link);
@@ -185,17 +196,7 @@ $http({
 }
 
 $scope.relcatvideo=function(){
-   $http({
-     url: 'https://sailsserver.herokuapp.com/uploads/count', 
-     method: "GET",
-     params: {categories:$rootScope.categories}  
-}).then(function(res){
 
-    console.log(res);
-
-    $scope.count = res.data.count;
-console.log($scope.count)
-  });
 $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
