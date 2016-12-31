@@ -1,7 +1,7 @@
 'use strict';
 
 var app=angular.module('app');
- app.factory('verifyDelete', function($mdDialog) {
+ app.service('verifyDelete', function($mdDialog) {
   return function(user) {
     var confirm = $mdDialog.confirm()
       .title('Are you sure!, Do you want to Delete')
