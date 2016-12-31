@@ -1,7 +1,18 @@
 'use strict';
 
-angular.module('app')
-  .controller('ProfilevideoCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog,verifyDelete) {
+angular.module('app');
+ app.factory('verifyDelete', function($mdDialog) {
+  return function(user) {
+    var confirm = $mdDialog.confirm()
+      .title('Are you sure!, Do you want to Delete')
+      .content('The Deleted Videos No Longer Available')
+      .ariaLabel('Delete User')
+      .ok('Delete Video')
+      .cancel('Cancel');
+    return $mdDialog.show(confirm);
+  }
+})
+ app.controller('ProfilevideoCtrl', function ($scope,$http,$localStorage,$rootScope,$stateParams,$location,$mdToast,$mdDialog,verifyDelete) {
   $http({
      url: "https://sailsserver.herokuapp.com/uploads", 
      method: "GET",
