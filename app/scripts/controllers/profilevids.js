@@ -19,7 +19,7 @@ $scope.del=function(user){
   $http({
     url: 'https://sailsserver.herokuapp.com/uploads', 
     method: "DELETE",
-    params: {id: id}
+    params: {id: user}
    }).then(function(res)
   {
   $scope.get();
@@ -27,7 +27,7 @@ $scope.del=function(user){
     $http({
     url: 'https://sailsserver.herokuapp.com/history/userdelete', 
     method: "DELETE",
-    params: {historyid: id}
+    params: {historyid: user}
    }).then(function(res)
   {
     console.log(res);
