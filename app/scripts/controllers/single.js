@@ -188,10 +188,22 @@ $scope.relcatvideo=function(){
 $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
-     params: {categories:$rootScope.categories,limit:4}  
+     params: {categories:$rootScope.categories,limit:8}  
 }).then(function(res){
   console.log(res);
   $scope.relcat = res.data;
+   $http({
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
+     method: "GET",
+     params: {categories:$rootScope.categories}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.count = res.data.count;
+console.log($scope.count)
+  });
+
 });
 }
 
@@ -336,18 +348,31 @@ else
 };
 $scope.relcat=[];
 $scope.page=1;
+$scope.count=0;
 $scope.more=function(){
   $scope.page++;
   $http({
      url: "https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC", 
      method: "GET",
-     params: {categories:$rootScope.categories,limit:4,skip:($scope.page-1)*4}  
+     params: {categories:$rootScope.categories,limit:8,skip:($scope.page-1)*8}  
 }).then(function(res){
   console.log(res);
   for(var i=0; i<res.data.length;i++){
         $scope.relcat.push(res.data[i])
        
       }
+      $http({
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
+     method: "GET",
+     params: {categories:$rootScope.categories}  
+}).then(function(res){
+
+    console.log(res);
+
+    $scope.count = res.data.count;
+console.log($scope.count)
+  });
+
   // $scope.relcat = res.data;
 });
 }

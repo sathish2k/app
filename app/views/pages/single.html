@@ -285,7 +285,7 @@
         </div>
       </div> 
       <div align="center" >
-    <button ng-click="more()" md-ink-ripple  class="md-btn md-raised m-b btn-fw">See More</button>  
+    <button ng-click="more()" ng-if="count!=relcat.length" || ng-if="count>8" md-ink-ripple  class="md-btn md-raised m-b btn-fw">See More</button>  
   </div>
     </div>
   </div>
