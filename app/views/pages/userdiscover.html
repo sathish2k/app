@@ -1,103 +1,57 @@
 <div style="width: 300px;float: right;">
-<form>
-  <div class="input-group stylish-input-group">
-    <input type="text"  class="form-control" placeholder="Search people">
-    <span class="input-group-addon">
-    <button type="submit">
-      <span class="glyphicon glyphicon-search"></span>
-    </button>  
-    </span>
-  </div>
-</form>
+  <form>
+    <div class="input-group stylish-input-group">
+      <input type="text"  class="form-control" placeholder="Search people">
+      <span class="input-group-addon">
+        <button type="submit">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>  
+      </span>
+    </div>
+  </form>
 </div>
 
 <div class="row">
   <div class="col-lg-12">
     <h3 style="padding-left: 15px;font-family: 'Lato', sans-serif;">Discover People</h3>
     <hr style="margin-top: 10px;margin-bottom: 10px;" />
-    <!--User 1-->
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="card">
-        <div class="card-heading">
-        <!--more -->
-                  <div class="card-tools">
-                    <ul class="list-inline">
-                      <li class="dropdown">
-                        <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
-                          <i class="mdi-navigation-more-vert text-md"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
-                          <li><a href>Report</a></li>
-                          <li ng-click=showConfirm($event)><a href>Block</a></li>                          
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <!---->
-          <div class="row">
-            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-3">
-              <a ><img src="images/a6.jpg" class="w-full img-circle"></a>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <div class="clear">
-              <h5><a href class="font-bold block">James Brogan</a></h5>
-              <span style="font-size: 12px; color:#6C7A89"><span>1,020 </span>Videos</span><br> 
-              <span style="font-size: 12px; color:#6C7A89"><span>1,020 </span>Followers</span>
-              </div>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top: 8px"><button md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ><div ng-cloak ng-if=!$root.isfollow ng-click="follow()">Follow</div><div ng-cloak ng-if=$root.isfollow ng-click="unfollow()">Following</div></button></div> 
-                          
-            
-          </div>
-        </div>     
-        </div>    
-      </div>
-      <!--u1 end-->
-      <!--u2 start-->
-      <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="card">
-        <div class="card-heading">
-        <!--more -->
-                  <div class="card-tools">
-                    <ul class="list-inline">
-                      <li class="dropdown">
-                        <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
-                          <i class="mdi-navigation-more-vert text-md"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
-                          <li><a href>Report</a></li>
-                          <li ng-click=showConfirm($event)><a href>Block</a></li>                          
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <!---->
-          <div class="row">
-            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-3">
-              <a ><img src="images/a6.jpg" class="w-full img-circle"></a>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <div class="clear">
-             <h5><a href class="font-bold block">James Brogan</a></h5>
-              <span style="font-size: 12px; color:#6C7A89"><span>1,020 </span>Videos</span><br> 
-              <span style="font-size: 12px; color:#6C7A89"><span>1,020 </span>Followers</span>
-              </div>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top: 8px"> <button md-ink-ripple class="liquid md-btn md-raised m-b btn-fw indigo" type="button" ng-click=showAlert($event) data-hover="Unfollow"><div ng-cloak ng-if=!$root.isfollow ng-click="follow()"><span>Following</span></div></button>
-              
-                          
-            
-          </div>
-        </div>     
-        </div>    
-      </div>
-      <!--u2-->
-      <!--u3-->
-      <!--u3-->
-      
-        </div>    
-      </div>
-      <!--user 2-->
-      <!--user 3-->
-      <!--user 3-->
 
+    <div class="col-lg-3 col-md-3 col-sm-3">
+      <div class="card" >
+        <div class="r-t pos-rlt md-ink-ripple" md-ink-ripple="" style="background:url(images/a3.jpg) center center;background-size:cover;height: 130px;">
+          <div class="p-lg bg-white-overlay text-center r-t" style="padding-top: 18px;padding-bottom: 18px;">
+            <a href class="w-xs inline">
+              <img src="images/a3.jpg" class="img-circle img-responsive">
+            </a>
+          </div>
+        </div>
+        <div class="card-heading" style="padding-top: 0px;">
+          <div class="clear" align="center">
+            <h5 style="height: 15px;">
+              <a href class="font-bold block"> First name last</a>
+            </h5>
+            <h5><a href class="">username</a></h5>
+            <div class="text-xxs font-thin text-muted">
+              <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ng-click="isFavorites(follow.id)? unfollow(follow.id) : follows(follow.id)">{{ isFavorites(follow.id) ? 'following' : 'Follow' }}</button>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="card-tools">
+          <ul class="list-inline">
+            <li class="dropdown">
+              <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                <i class="mdi-action-settings text-md"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                <li><a href>Report</a></li>
+                <li ng-click=showConfirm($event)><a href>Block</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+     
+  </div>    
+</div>
+      
