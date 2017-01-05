@@ -15,6 +15,13 @@ $rootScope.datafollowers=res.data.followers;
 $rootScope.datasfollowing=res.data.following;
    $scope.get();
   })
+
+
+// $scope.followersearch=function(){
+  
+// }
+
+
 $scope.isFavorites = function(id) {
       if ($rootScope.id==$stateParams.id) {
        return $rootScope.datasfollowing.indexOf(id) !== -1;
@@ -33,6 +40,9 @@ $scope.isFavorites = function(id) {
     $scope.pagination = {
       current:1
     };
+
+
+
 
     $scope.pageChanged = function(newPage) {
         getResultsPage(newPage);

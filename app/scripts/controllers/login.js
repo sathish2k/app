@@ -9,7 +9,7 @@ angular.module('app')
      var obj={};
      obj.token=$stateParams.token;
      obj.id=$stateParams.id;
-     $http.post('  /auth/activate', obj).success(function(resp){
+     $http.post('https://sailsserver.herokuapp.com/auth/activate', obj).success(function(resp){
      console.log(resp);
      $rootScope.activateerror=resp.message;
      $scope.activateres();
@@ -297,9 +297,9 @@ angular.module('app')
             console.log(fromState.name)
         $state.previous = fromState.name;
     });
-        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, toState)
+        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, toState,toParams)
         {
-
+console.log(toParams)
               console.log($localStorage.form1)
               console.log($localStorage.form2)
               console.log($localStorage.form3)
@@ -358,11 +358,11 @@ angular.module('app')
           document.body.scrollTop = document.documentElement.scrollTop = 0;
           $("html,body").animate({scrollTop:0},1000);
           $rootScope.user=$localStorage.user;
-    //        if(toState.name=='app.myprofile' && $rootScope.user)
-    // {
-    //   event.preventDefault();
-    //   $state.go('app.profile',{ 'user':$rootScope.user })
-    // }
+           if(toState.name=='app.myprofile' && $rootScope.user==toParams.user)
+    {
+      event.preventDefault();
+      $state.go('app.profile',{ 'user':$rootScope.user })
+    }
           console.log($rootScope.user)
            window.onload=function(){
             if ($localStorage.token) {

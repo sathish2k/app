@@ -3,6 +3,104 @@
 var app=angular.module('app');
 
   app.controller('SingleCtrl', function($scope,$stateParams,$http,$location,$localStorage,$rootScope,messageservice,$window) {
+   $scope.showDetails='';
+   $scope.showdetail=function(id){
+    $scope.showDetails=id;
+
+   }
+
+
+$scope.updatecomments=function(id){
+   if(!$scope.commentsupdate || $scope.commentsupdate == ''){
+        return
+      }
+
+console.log(id);
+console.log($scope.commentsupdate)
+$scope.showDetails='';
+
+$http.put('https://sailsserver.herokuapp.com/comments/'+id,{comments:$scope.commentsupdate}).success(function(res){
+
+console.log(res)
+$scope.getcomment();
+}).error(function(err){
+  console.log(err)
+})
+
+}
+
+
+$scope.delete=function(id){
+
+
+  $http.delete('https://sailsserver.herokuapp.com/comments/'+id).success(function(res){
+
+console.log(res)
+$scope.getcomment();
+}).error(function(err){
+  console.log(err)
+})
+
+
+}
+
+
+
+ $scope.bookmark=false;
+
+ $http({
+     url: "https://sailsserver.herokuapp.com/bookmark", 
+     method: "GET",
+     params: {userid:$rootScope.id,videoid:$stateParams.id}  
+}).then(function(res){
+  console.log(res);
+  $scope.bookmark=res.data[0].bookmark;
+ 
+});
+
+$scope.addbookmark=function(){
+  if($localStorage.token){
+console.log('addbookmark')
+$scope.bookmark=true
+var bookmarkobj={};
+bookmarkobj.videoid=$stateParams.id;
+bookmarkobj.userid=$rootScope.id;
+bookmarkobj.username=$rootScope.user;
+bookmarkobj.bookmark=true;
+bookmarkobj.uploadername=$rootScope.uservideo;
+bookmarkobj.rating=$rootScope.rating;
+bookmarkobj.link=$rootScope.link;
+bookmarkobj.usercount=$rootScope.usercount;
+bookmarkobj.language=$scope.language;
+bookmarkobj.views=$rootScope.views;
+bookmarkobj.categories=$rootScope.categories;
+bookmarkobj.title=$rootScope.$state.current.data.title;
+
+$http.post('https://sailsserver.herokuapp.com/bookmark',bookmarkobj).success(function(res){
+
+  console.log(res)
+}).error(function(err){
+  console.log(err)
+})
+}
+else{
+    $location.path('auth/signin/' +$stateParams.id);
+  }
+}
+$scope.removebookmark=function(){
+console.log('removebookmark')
+$scope.bookmark=false
+var removeobj={};
+removeobj.videoid=$stateParams.id;
+removeobj.userid=$rootScope.id;
+$http.post('https://sailsserver.herokuapp.com/auth/bookmarkdelete',removeobj).success(function(res){
+
+  console.log(res)
+}).error(function(err){
+  console.log(err)
+})
+}
+
     if($localStorage.token){
   var fobj={};
   console.log('follow')
@@ -18,6 +116,7 @@ var app=angular.module('app');
 }
     $scope.url = $location.absUrl();
   messageservice.reset();
+$scope.language='';
 
  $http({
      url: "https://sailsserver.herokuapp.com/uploads", 
@@ -27,6 +126,8 @@ var app=angular.module('app');
   console.log(res);
 
   $scope.upload = res.data;
+  $scope.language=res.data.language;
+  $scope.views=res.data.views;
   $rootScope.history=res.data;
   var screenwidth=$window.innerWidth;
   if(screenwidth>600){
@@ -114,7 +215,7 @@ video.on('resolutionchange', function() {
 })
 
   $scope.link();
-   $scope.views();
+   $scope.view();
    $scope.uservideo();
    $scope.relcatvideo();
    $scope.history();
@@ -226,11 +327,11 @@ $http({
       obj.email=$rootScope.user;
       obj.video=$stateParams.id
       if($localStorage.token){
-        io.socket.post('/comments/socketcomment',obj,function (resData, jwRes) { 
-        })
+        
         $http.post('https://sailsserver.herokuapp.com/comments', obj).success(function(resp){
           console.log(resp);
           $scope.comments=''; 
+          $scope.getcomment();
         }).error( function(err) {
           console.log(err);
         });
@@ -239,13 +340,21 @@ $http({
     $location.path('auth/signin/' +$stateParams.id);
 }
 
-$scope.comment=[];
-io.socket.on('comment',function(comments) {
-console.log(comments)
-$scope.comment.push(comments)
-$scope.$apply();
-})
 
+$scope.getcomment=function(){
+  $http({
+     url: "https://sailsserver.herokuapp.com/comments?sort=createdAt DESC", 
+     method: "GET",
+     params: {video:$stateParams.id,limit:10}  
+}).then(function(resp){
+
+        $scope.comment=resp.data;
+     
+    console.log($scope.comment);
+
+
+  });
+}
 
 if($stateParams.id){
 $http({
@@ -253,9 +362,9 @@ $http({
      method: "GET",
      params: {video:$stateParams.id,limit:10}  
 }).then(function(resp){
-for(var i=0; i<resp.data.length;i++){
-        $scope.comment.push(resp.data[i])
-      }
+
+        $scope.comment=resp.data;
+     
     console.log($scope.comment);
 
 
@@ -301,7 +410,7 @@ $scope.mycomments=function(){
 
 
 
-$scope.views=function(){
+$scope.view=function(){
 $http.put('https://sailsserver.herokuapp.com/uploads/' + $stateParams.id, 
     { 
       views:$rootScope.views+1
@@ -488,3 +597,17 @@ app.directive('starRating', function () {
 
    });
 
+// app.directive('buttonBookmark', function() {
+//   return {
+//     scope: true,
+//     restrict: 'E',
+//     template: '<button class="btn btn-icon1"><span class="glyphicon glyphicon-bookmark" ng-class="{active: item.bookmark}"></span></button>',
+//     link: function(scope, elem) {
+//       elem.bind('click', function() {
+//         scope.$apply(function(){
+//           scope.item.bookmark = !scope.item.bookmark;
+//         });
+//       });
+//     }
+//   };
+// });

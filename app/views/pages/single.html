@@ -11,7 +11,19 @@
          
             
             <div class="card-body">
-              <h3 style="padding-left: 10px;margin-top: 5px;margin-bottom: 5px;">{{upload.name}}</h3>
+              <div class="row">
+                <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10">
+                  <h3 style="padding-left: 10px;margin-top: 5px;margin-bottom: 5px;display: inline-block;">{{upload.name}}</h3>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                  <div class="presentation" >
+                    <button ng-click="bookmark?removebookmark() : addbookmark()" class="btn btn-icon1"><span class="glyphicon glyphicon-bookmark" ng-class="{active: bookmark}"></span></button>
+                    <div class="card-tools" style="top: 0px;">
+                      <i class="material-icons">reply</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <hr style="margin:0px;" />
               <div class="row">
                 <div class="col-lg-9">
@@ -37,11 +49,11 @@
               <div class="row">
                 <div class="col-lg-9">
                   <div class="card-heading" style="padding-top: 10px;">
-                    <a href class="pull-left w-32 m-r" style="width: 50px;">
+                    <a ui-sref="app.myprofile({user:upload.uploadername})" class="pull-left w-32 m-r" style="width: 50px;">
                         <img src="images/a6.jpg" class="w-full img-circle">
                     </a>
                     <div class="clear">
-                        <a href class="font-bold block">{{upload.uploadername}}</a>
+                        <a ui-sref="app.myprofile({user:upload.uploadername})" class="font-bold block">{{upload.uploadername}}</a>
                         <div class="text-xxs font-thin text-muted">
                         <div ng-if=$root.user!==upload.uploadername>
                         <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ng-click="$root.isfollow? unfollow() : follow()">{{ $root.isfollow ? 'following' : 'Follow' }}</button>
@@ -101,7 +113,7 @@
                 </ul>
                 <div class="tab-content p m-b-md clear b-t b-t-2x">
                   <div role="tabpanel" class="tab-pane animated fadeInDown active" id="tab_7">
-                    <h4><b>Published on</b> : {{upload.createdAt.substr(0,10)}}</h4>
+                    <p>Published on : {{upload.createdAt.substr(0,10)}}</p>
                     <h5>{{upload.discription}}.</h5>
                   </div>
                   <div role="tabpanel" class="tab-pane animated fadeInDown" id="tab_8">
@@ -166,24 +178,27 @@
                           <h6>{{commented.comments}} </h6>     
                         </div>
                     </div>
-                    <div class="card-tools">
+                    <div class="card-tools" ng-if="$root.user==commented.email">
                       <ul class="list-inline">
                         <li class="dropdown">
                           <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
                             <i class="mdi-navigation-more-vert text-md"></i>
                           </a>
-                          <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
-                            <li><a href ng-click="showDetails = ! showDetails" >Edit</a></li>
-                            <li><a href>Delete</a></li>
+                          <ul  class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                            <li><a href ng-click="showdetail(commented.id)" >Edit</a></li>
+                            <li><a href ng-click="delete(commented.id)">Delete</a></li>
                           </ul>
                         </li>
                       </ul>
                     </div>
-                    <div ng-show="showDetails">
+                    <div ng-show="showDetails==commented.id">
                       <form style="margin-bottom: 10px;">
-                        <textarea  class="form-control no-border p-md" rows="2" ng-model="comments" placeholder="Comment..." style="resize: vertical;"></textarea>
+                        <textarea  class="form-control no-border p-md" rows="2" ng-model="$parent.commentsupdate" placeholder="Comment..." style="resize: vertical;"></textarea>
+
                       </form>
-                      <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" style="float: right;">Update Comment</button>
+                      
+                      <button  md-ink-ripple class="md-btn md-raised m-b btn-fw indigo" ng-click="updatecomments(commented.id)" style="float: right;">Update Comment</button>
+                     
                     </div>
                     <hr style="margin:0px;" />
                     

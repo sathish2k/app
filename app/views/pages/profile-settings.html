@@ -47,7 +47,7 @@
              </div>
                 </md-input-container>
               <div class="row">
-                <div class="col-sm-6 m-b">
+                <div class="col-sm-4 m-b">
                   <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >
                <label>Phone</label>
                  <input name="phone" class="md-input" ng-model="mobilenumber" required="required"> 
@@ -56,7 +56,7 @@
                </div>
                 </md-input-container>   
                 </div>
-                <div class="col-sm-6 m-b">
+                <div class="col-sm-3 m-b">
                       <md-input-container flex>
                 <md-select name="gender" ng-model="gender" required="required" >
                     <label value="gender" style="padding-left: 13px">Gender</label>
@@ -67,8 +67,17 @@
                 <div class="errors" ng-messages="validate.gender.$error">
           <div ng-message="required">Please Select Your Gender</div>
         </div>
+
                 </md-input-container>
                 </div>
+                
+                 <div class="col-sm-3 m-b">
+                   <md-datepicker ng-model="mydate" name="datefield" md-placeholder="Date Of Birth" md-max-date="maxdate" required="required"></md-datepicker>
+                   <div class="errors" ng-messages="validate.datefield.$error" >
+                    <div ng-message="required">DOB</div>
+                   </div>
+                 </div>
+                  
               </div>
                             
               <md-input-container class="md-block" style="margin-bottom: 0px;padding:2px;" >

@@ -165,3 +165,58 @@ form.navbar-form.navbar-right {
     border:0;
     background:transparent;
 }
+
+
+
+
+.presentation {
+
+}
+.presentation .btn-icon1 {
+  font-size: 1.5em;
+  margin: 0 0em;
+}
+.btn-icon1 {
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+.btn-icon1:active,
+.btn-icon1:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+.btn-icon1:active {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+}
+.btn-icon1:focus {
+  outline: 0 none !important;
+}
+.btn-icon1 .glyphicon {
+  -webkit-transition: color 0.1s ease;
+  -moz-transition: color 0.1s ease;
+  -o-transition: color 0.1s ease;
+  transition: color 0.1s ease;
+}
+
+.btn-icon1 .glyphicon-bookmark {
+  color: #666;
+}
+.btn-icon1 .glyphicon-bookmark:hover {
+  color: rgba(102, 102, 102, 0.9);
+}
+.btn-icon1 .glyphicon-bookmark.active {
+  color: #A6D478;
+}
+.btn-icon1 .glyphicon-bookmark.active:hover {
+  color: rgba(166, 212, 120, 0.9);
+}

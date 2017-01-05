@@ -1,17 +1,6 @@
 /* 
 
 */
-
-
-.datepickerdemoBasicUsage {
-  /** Demo styles for mdCalendar. */ }
-  .datepickerdemoBasicUsage md-content {
-    padding-bottom: 200px; }
-  .datepickerdemoBasicUsage .validation-messages {
-    font-size: 12px;
-    color: #dd2c00;
-    margin-left: 15px; }
-
 .emailvalid{
    font-size: 12px;
 }
@@ -6220,7 +6209,7 @@ a.text-dark:hover {
   width: 300px;
 }
 .w-xxl2 {
-  width: 800px;
+  width: 750px;
 }
 .w-xxl1 {
   width: 900px;

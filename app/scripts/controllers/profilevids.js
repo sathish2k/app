@@ -20,10 +20,18 @@ angular.module('app');
 }).then(function(res){
 $scope.videos=res.data;
     console.log(res);
+});
+$http({
+     url: 'https://sailsserver.herokuapp.com/uploads/count', 
+     method: "GET",
+     params:{uploadername:$stateParams.user}  
+}).then(function(res){
 
-   
+    console.log(res);
+
+    $scope.count = res.data.count;
+console.log($scope.count)
   });
-
 
 $scope.del=function(user){
   verifyDelete(user).then(function() {

@@ -27,7 +27,7 @@
           Videos
         </a>
       </div>
-      <div class="text-center b-b b-light">
+      <!-- <div class="text-center b-b b-light">
         <a href class="inline m text-color">
           <span class="h3 block font-bold" ui-sref="app.followerslist({id:profile[0].id})">{{followerscount}}</span>
           <em class="text-xs">Followers</em>
@@ -36,10 +36,10 @@
           <span class="h3 block font-bold" ui-sref="app.followinglist({id:profile[0].id})">{{followingcount}}</span>
           <em class="text-xs">Following</em>
         </a>
-      </div>
+      </div> -->
       <div class="p b-b b-light">
-        <p>About</p>
-        <p ng-repeat="detail in profile[0].personaldetails">{{detail.about}}</p>
+        <span class="font-bold" style="padding-right: 5px;">About</span>
+        <span  ng-repeat="detail in profile[0].personaldetails">{{detail.about}}</span>
         <div class="m-v text-center" ng-repeat="detail in profile[0].socialdetails">
           <a ng-if=(detail.fburl) class="text-muted" href={{detail.fburl}} target="_blank">
             <i class="fa ui-icon fa-facebook"></i>
@@ -79,7 +79,7 @@
       <div class="col-sm-6">
         <div class="card {{app.setting.theme.primary}}">
           <div class="card-heading">
-            <h2 class="font-thin">Followers</h2>
+            <h2 class="font-thin" ui-sref="app.followerslist({id:profile[0].id})" style="display: inline-block;cursor: pointer;">Followers</h2>
           </div>
           <div class="card-divider"></div>
           <div class="card-body">
@@ -92,14 +92,14 @@
             <a href class="m-r-xs inline">
               <img src="images/a6.jpg" class="w-40 img-circle">
             </a>
-            <a class="btn btn-rounded btn-info">99+</a>
+            <a ui-sref="app.followerslist({id:profile[0].id})" class="btn btn-rounded btn-info">{{followerscount}}+</a>
           </div>
         </div>  
       </div>
       <div class="col-sm-6">
         <div class="card {{app.setting.theme.primary}}">
           <div class="card-heading">
-            <h2 class="font-thin">Following</h2>
+            <h2 class="font-thin" ui-sref="app.followinglist({id:profile[0].id})" style="display: inline-block;cursor: pointer;">Following</h2>
           </div>
           <div class="card-divider"></div>
           <div class="card-body">
@@ -112,7 +112,7 @@
             <a href class="m-r-xs inline">
               <img src="images/a6.jpg" class="w-40 img-circle">
             </a>
-            <a class="btn btn-rounded btn-info">99+</a>
+            <a ui-sref="app.followinglist({id:profile[0].id})" class="btn btn-rounded btn-info">{{followingcount}}+</a>
           </div>
         </div>  
       </div>

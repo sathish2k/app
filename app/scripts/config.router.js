@@ -317,6 +317,15 @@ $locationProvider.html5Mode(true);
     resolve: load('scripts/controllers/profile.js')
 
   })
+  $stateProvider
+  .state("app.savedvideo",{
+    url:'/saved video',
+    templateUrl:'views/pages/savedvideo.html',
+     data : { title: 'saved video',isloggedin:'true', grantAccessTo: 'authenticated'},
+    controller:'BookmarkCtrl',
+    resolve: load('scripts/controllers/bookmark.js')
+
+  })
    $stateProvider
   .state("app.followinglist",{
     url:'/following/:id',

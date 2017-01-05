@@ -71,7 +71,7 @@ if($localStorage.token){
 $http({
      url: 'https://sailsserver.herokuapp.com/uploads?sort=createdAt DESC', 
      method: "GET",
-     params:  {where:{"uploaderid":$rootScope.follow,limit:8}}  
+     params:  {where:{"uploaderid":$rootScope.follow},limit:8}  
 }).then(function(res){
 
     console.log(res);
